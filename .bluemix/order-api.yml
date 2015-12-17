@@ -1,0 +1,54 @@
+---
+stages:
+- name: Build Stage
+  inputs:
+  - type: git
+    branch: master
+  triggers:
+  - type: commit
+  jobs:
+  - name: Build
+    type: builder
+- name: Deploy Stage
+  inputs:
+  - type: job
+    stage: Build Stage
+    job: Build
+  triggers:
+  - type: stage
+  properties:
+  - name: CF_APP_NAME
+    value: 'undefined'
+    type: text
+  - name: APP_URL
+    value: 'undefined'
+    type: text
+  jobs:
+  - name: Deploy to dev
+    type: deployer
+    target:
+      url: ${CF_TARGET_URL}
+      organization: ${CF_ORGANIZATION}
+      space: ${CF_SPACE}
+      application: ${CF_APP}
+    script: |-
+      #!/bin/bash
+      cf create-service text_to_speech standard text-to-speech-service-standard
+      cf push "${CF_APP}"
+      export CF_APP_NAME="$CF_APP"
+      # View logs
+      #cf logs "${CF_APP}" --recent
+  - name: Sauce Labs Tests
+    extension_id: ibm.devops.services.pipeline.saucelabs
+    type: tester
+    target:
+      url: ${CF_TARGET_URL}
+      organization: ${CF_ORGANIZATION}
+      space: ${CF_SPACE}
+    ACCESS: ${API_KEY}
+    DL_ASSETS: 'true'
+    SELECT_CMD: grunt
+    USER_ID: ${SAUCE_USER}
+    COMMAND: '#!/bin/bash'
+    enable_tests: true
+    test_file_pattern: '*.xml'

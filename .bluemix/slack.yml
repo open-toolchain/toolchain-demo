@@ -1,0 +1,4 @@
+---
+parameters:
+  auth-token: ""
+  channelName: ""
