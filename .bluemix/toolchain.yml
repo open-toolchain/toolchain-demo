@@ -1,4 +1,99 @@
 ---
+name: Interconnect Toolchain Demo
+description: A ToolChain to end all toolchains
+image: image.png
+
+# Github repos
+ui.repo:
+    tool: github
+    parameters:
+        name: ui
+        fork: ajlohr/Microservices_UI
+        visibility: private
+
+catalog-api.repo:
+    tool: github
+    parameters:
+        name: catalog-api
+        fork: ajlohr/Microservices_CatalogAPI
+        visibility: private
+
+order-api.repo:
+    tool: github
+    parameters:
+        name: order-api
+        fork: ajlohr/Microservices_OrdersAPI
+        visibility: private
+
+# Pipelines
+ui.build:
+ tool: pipeline
+ metadata: ui.pipeline.yml
+ bind:
+   - ui.repo
+   - test
+   - messaging
+
+catalog-api.build:
+    tool: pipeline
+    metadata: catalog.api.pipeline.yml
+    bind: 
+       - messaging
+       - catalog-api.repo
+
+order-api.build:
+    tool: pipeline
+    metadata: order.api.yml
+    bind: 
+       - order-api.repo
+       - messaging
+
+#Slack
+messaging:
+  tool: slack
+  metadata: slack.yml
+
+#Sauce Laps
+test:
+ tool: saucelabs
+ metadata: saucelabs.yml
+
+
+#Deployment
+catalog-api.deploy:
+   tool: cf
+   metadata: catalog.manifest.yml
+
+ui.deploy:
+  tool: cf
+  metadata: ui.manifest.yml
+  bind:  
+   - catalog-api.deploy
+   - order-api.deploy
+
+order-api.deploy:
+  tool: cf
+  metadata: order.manifest.yml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ui.repo:
   capability: ids-git
@@ -25,7 +120,7 @@ catalog-api.build:
 
 order-api.build:
   capability: pipeline
-  metadata: ui.pipeline.yml
+  metadata: order-api.pipeline.yml
     
 test:
   capability: saucelabs
