@@ -33,6 +33,7 @@ ui.build:
    - ui.repo
    - test
    - messaging
+   - ui.deploy
 
 catalog-api.build:
     tool: pipeline
@@ -40,6 +41,7 @@ catalog-api.build:
     bind: 
        - messaging
        - catalog-api.repo
+       - catalog-api.deploy
 
 order-api.build:
     tool: pipeline
@@ -47,6 +49,7 @@ order-api.build:
     bind: 
        - order-api.repo
        - messaging
+       - order-api.deploy
 
 #Slack
 messaging:
