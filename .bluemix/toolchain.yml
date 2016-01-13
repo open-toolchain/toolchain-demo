@@ -8,21 +8,21 @@ ui.repo:
     tool: github
     parameters:
         name: ui
-        fork: ajlohr/Microservices_UI
+        fork: skaegi/Microservices_UI
         visibility: private
 
 catalog-api.repo:
     tool: github
     parameters:
         name: catalog-api
-        fork: ajlohr/Microservices_CatalogAPI
+        fork: skaegi/Microservices_CatalogAPI
         visibility: private
 
 order-api.repo:
     tool: github
     parameters:
         name: order-api
-        fork: ajlohr/Microservices_OrdersAPI
+        fork: skaegi/Microservices_OrdersAPI
         visibility: private
 
 # Pipelines
