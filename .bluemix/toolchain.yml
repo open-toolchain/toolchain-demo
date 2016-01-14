@@ -45,7 +45,7 @@ catalog-api.build:
 
 order-api.build:
     tool: pipeline
-    metadata: order.api.yml
+    metadata: order.api.pipeline.yml
     bind: 
        - order-api.repo
        - messaging
