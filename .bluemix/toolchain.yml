@@ -37,7 +37,7 @@ ui.build:
 
 catalog-api.build:
     tool: pipeline
-    metadata: catalog.api.pipeline.yml
+    metadata: catalog-api.pipeline.yml
     bind: 
        - messaging
        - catalog-api.repo
@@ -45,7 +45,7 @@ catalog-api.build:
 
 order-api.build:
     tool: pipeline
-    metadata: order.api.pipeline.yml
+    metadata: order-api.pipeline.yml
     bind: 
        - order-api.repo
        - messaging
