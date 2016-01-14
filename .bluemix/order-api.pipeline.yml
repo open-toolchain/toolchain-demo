@@ -4,6 +4,7 @@ stages:
   inputs:
   - type: git
     branch: master
+    url: ${GIT_REPO_URL}
   triggers:
   - type: commit
   jobs:
