@@ -5,6 +5,7 @@ stages:
   - type: git
     branch: master
     url: ${GIT_REPO_URL}
+    token: ${GIT_REPO_TOKEN}
   triggers:
   - type: commit
   jobs:
