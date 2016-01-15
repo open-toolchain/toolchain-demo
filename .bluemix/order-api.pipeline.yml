@@ -9,8 +9,13 @@ stages:
   triggers:
   - type: commit
   jobs:
-  - name: Build
+  - artifact_dir: output
+    name: Build
     type: builder
+    build_type: ant
+    script: |-
+      #!/bin/bash
+      ant
 - name: Deploy Stage
   inputs:
   - type: job
