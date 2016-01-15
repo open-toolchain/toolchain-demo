@@ -35,7 +35,7 @@ stages:
       application: ${CF_APP}
     script: |-
       #!/bin/bash
-      cf create-service text_to_speech standard text-to-speech-service-standard
+      cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
       cf push "${CF_APP}"
       export CF_APP_NAME="$CF_APP"
       # View logs
