@@ -1,3 +1,10 @@
+---
 applications:
-  ui:
-    name: microservices-ui
+- services:
+  - catalogAPI
+  - ordersAPI
+name: microservices-ui
+memory: 256M
+instances: 1
+host: ms-UI-${random-word}
+path: .
