@@ -45,6 +45,6 @@ stages:
       export CF_APP_NAME="$CF_APP"
       # Update catalogAPI
       export HOST=http://$(cf app $CF_APP | grep urls: | awk '{print $2}')
-      cf uups catalogAPI -p '{"host":"${HOST}"}'
+      cf uups catalogAPI -p '{"host":"$\{HOST\}"}'
       # View logs
       #cf logs "${CF_APP}" --recent
