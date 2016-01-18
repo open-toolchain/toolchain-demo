@@ -36,13 +36,16 @@ stages:
     script: |-
       #!/bin/bash
       cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
-      cf push "${CF_APP}"
-      export CF_APP_NAME="$CF_APP"
       # Publish catalogAPI
       if ! cf service catalogAPI > /dev/null; then
+      cf cups catalogAPI
+      fi
+      # Push app
+      cf push "${CF_APP}"
+      export CF_APP_NAME="$CF_APP"
+      # Update catalogAPI
       export HOST=http://$(cf app $CF_APP | grep urls: | awk '{print $2}')
-      cf cups catalogAPI -p '{"host":"$HOST"}'
-      fi 
+      cf uups catalogAPI -p '{"host":"$HOST"}'
       # View logs
       #cf logs "${CF_APP}" --recent
       
