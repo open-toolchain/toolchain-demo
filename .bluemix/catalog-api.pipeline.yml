@@ -48,4 +48,3 @@ stages:
       cf uups catalogAPI -p '{"host":"$HOST"}'
       # View logs
       #cf logs "${CF_APP}" --recent
-      
