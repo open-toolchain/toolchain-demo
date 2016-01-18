@@ -51,6 +51,6 @@ stages:
       export CF_APP_NAME="$CF_APP"
       # Update ordersAPI
       export HOST=http://$(cf app $CF_APP | grep urls: | awk '{print $2}')
-      cf uups ordersAPI -p "{\"host\":\"$HOST\"}"
+      cf uups ordersAPI -p '{"host":"$HOST"}'
       # View logs
       #cf logs "${CF_APP}" --recent
