@@ -4,13 +4,6 @@ description: A ToolChain to end all toolchains
 image: image.png
 
 # Github repos
-ui.repo:
-    tool: github
-    parameters:
-        name: ui
-        fork: skaegi/Microservices_UI
-        visibility: private
-
 catalog-api.repo:
     tool: github
     parameters:
@@ -23,6 +16,13 @@ order-api.repo:
     parameters:
         name: order-api
         fork: skaegi/Microservices_OrdersAPI
+        visibility: private
+        
+ui.repo:
+    tool: github
+    parameters:
+        name: ui
+        fork: skaegi/Microservices_UI
         visibility: private
 
 # Pipelines
