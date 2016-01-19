@@ -5,76 +5,100 @@ image: image.png
 
 # Github repos
 catalog-api.repo:
-    tool: github
+    capability: github
     parameters:
         name: catalog-api
         fork: skaegi/Microservices_CatalogAPI
-        visibility: private
 
-order-api.repo:
-    tool: github
+orders-api.repo:
+    capability: github
     parameters:
         name: order-api
         fork: skaegi/Microservices_OrdersAPI
-        visibility: private
         
 ui.repo:
-    tool: github
+    capability: github
     parameters:
         name: ui
         fork: skaegi/Microservices_UI
-        visibility: private
 
 # Pipelines
 ui.build:
- tool: pipeline
+ capability: pipeline
  metadata: ui.pipeline.yml
- bind:
-   - ui.repo
-   - test
-   - messaging
-   - ui.deploy
-
+ env: 
+   SAUCE_USER: ${test.parameters.username}
+   API_KEY: ${test.parameters.key}
+   DEV_APP_NAME: ${dev-stage.parameters.ui-app-name}
+   DEV_SPACE_NAME: ${dev-stage.parameters.space}
+   DEV_ORG_NAME: ${dev-stage.parameters.organization}
+   DEV_REGION_NAME: ${dev-stage.parameters.region}
+   QA_APP_NAME: ${qa-stage.parameters.ui-app-name}
+   QA_SPACE_NAME: ${qa-stage.parameters.space}
+   QA_ORG_NAME: ${qa-stage.parameters.organization}
+   QA_REGION_NAME: ${qa-stage.parameters.region}
+   PROD_APP_NAME: ${prod-stage.parameters.ui-app-name}
+   PROD_SPACE_NAME: ${prod-stage.parameters.space}
+   PROD_ORG_NAME: ${prod-stage.parameters.organization}
+   PROD_REGION_NAME: ${prod-stage.parameters.region}
+   
 catalog-api.build:
-    tool: pipeline
+    capability: pipeline
     metadata: catalog-api.pipeline.yml
-    bind: 
-       - messaging
-       - catalog-api.repo
-       - catalog-api.deploy
+    env:
+   DEV_APP_NAME: ${dev-stage.parameters.catalog-app-name}
+   DEV_SPACE_NAME: ${dev-stage.parameters.space}
+   DEV_ORG_NAME: ${dev-stage.parameters.organization}
+   DEV_REGION_NAME: ${dev-stage.parameters.region}
+   QA_APP_NAME: ${qa-stage.parameters.catalog-app-name}
+   QA_SPACE_NAME: ${qa-stage.parameters.space}
+   QA_ORG_NAME: ${qa-stage.parameters.organization}
+   QA_REGION_NAME: ${qa-stage.parameters.region}
+   PROD_APP_NAME: ${prod-stage.parameters.catalog-app-name}
+   PROD_SPACE_NAME: ${prod-stage.parameters.space}
+   PROD_ORG_NAME: ${prod-stage.parameters.organization}
+   PROD_REGION_NAME: ${prod-stage.parameters.region}
 
-order-api.build:
-    tool: pipeline
+orders-api.build:
+    capability: pipeline
     metadata: order-api.pipeline.yml
-    bind: 
-       - order-api.repo
-       - messaging
-       - order-api.deploy
+    env:
+   DEV_APP_NAME: ${dev-stage.parameters.orders-app-name}
+   DEV_SPACE_NAME: ${dev-stage.parameters.space}
+   DEV_ORG_NAME: ${dev-stage.parameters.organization}
+   DEV_REGION_NAME: ${dev-stage.parameters.region}
+   QA_APP_NAME: ${qa-stage.parameters.orders-app-name}
+   QA_SPACE_NAME: ${qa-stage.parameters.space}
+   QA_ORG_NAME: ${qa-stage.parameters.organization}
+   QA_REGION_NAME: ${qa-stage.parameters.region}
+   PROD_APP_NAME: ${prod-stage.parameters.orders-app-name}
+   PROD_SPACE_NAME: ${prod-stage.parameters.space}
+   PROD_ORG_NAME: ${prod-stage.parameters.organization}
+   PROD_REGION_NAME: ${prod-stage.parameters.region}
 
 #Slack
 messaging:
-  tool: slack
+  capability: slack
   metadata: slack.yml
 
 #Sauce Laps
 test:
- tool: saucelabs
+ capability: saucelabs
  metadata: saucelabs.yml
 
-
 #Deployment
-catalog-api.deploy:
-   tool: cf
-   metadata: catalog.manifest.yml
+dev-stage:
+  schema: stage.json
+  parameters:
+    space: dev
 
-ui.deploy:
-  tool: cf
-  metadata: ui.manifest.yml
-  bind:  
-   - catalog-api.deploy
-   - order-api.deploy
-
-order-api.deploy:
-  tool: cf
-  metadata: order.manifest.yml
+qa-stage:
+  schema: stage.json
+  parameters:
+    space: qa
+    
+prod-stage:
+  schema: stage.json
+  parameters:
+    space: prod
 
