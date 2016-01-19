@@ -15,7 +15,7 @@ orders-api.repo:
     parameters:
         name: order-api
         fork: skaegi/Microservices_OrdersAPI
-        
+
 ui.repo:
     capability: github
     parameters:
@@ -41,40 +41,40 @@ ui.build:
    PROD_SPACE_NAME: ${prod-stage.parameters.space}
    PROD_ORG_NAME: ${prod-stage.parameters.organization}
    PROD_REGION_NAME: ${prod-stage.parameters.region}
-   
+
 catalog-api.build:
     capability: pipeline
     metadata: catalog-api.pipeline.yml
     env:
-   DEV_APP_NAME: ${dev-stage.parameters.catalog-app-name}
-   DEV_SPACE_NAME: ${dev-stage.parameters.space}
-   DEV_ORG_NAME: ${dev-stage.parameters.organization}
-   DEV_REGION_NAME: ${dev-stage.parameters.region}
-   QA_APP_NAME: ${qa-stage.parameters.catalog-app-name}
-   QA_SPACE_NAME: ${qa-stage.parameters.space}
-   QA_ORG_NAME: ${qa-stage.parameters.organization}
-   QA_REGION_NAME: ${qa-stage.parameters.region}
-   PROD_APP_NAME: ${prod-stage.parameters.catalog-app-name}
-   PROD_SPACE_NAME: ${prod-stage.parameters.space}
-   PROD_ORG_NAME: ${prod-stage.parameters.organization}
-   PROD_REGION_NAME: ${prod-stage.parameters.region}
+      DEV_APP_NAME: ${dev-stage.parameters.catalog-app-name}
+      DEV_SPACE_NAME: ${dev-stage.parameters.space}
+      DEV_ORG_NAME: ${dev-stage.parameters.organization}
+      DEV_REGION_NAME: ${dev-stage.parameters.region}
+      QA_APP_NAME: ${qa-stage.parameters.catalog-app-name}
+      QA_SPACE_NAME: ${qa-stage.parameters.space}
+      QA_ORG_NAME: ${qa-stage.parameters.organization}
+      QA_REGION_NAME: ${qa-stage.parameters.region}
+      PROD_APP_NAME: ${prod-stage.parameters.catalog-app-name}
+      PROD_SPACE_NAME: ${prod-stage.parameters.space}
+      PROD_ORG_NAME: ${prod-stage.parameters.organization}
+      PROD_REGION_NAME: ${prod-stage.parameters.region}
 
 orders-api.build:
     capability: pipeline
     metadata: order-api.pipeline.yml
     env:
-   DEV_APP_NAME: ${dev-stage.parameters.orders-app-name}
-   DEV_SPACE_NAME: ${dev-stage.parameters.space}
-   DEV_ORG_NAME: ${dev-stage.parameters.organization}
-   DEV_REGION_NAME: ${dev-stage.parameters.region}
-   QA_APP_NAME: ${qa-stage.parameters.orders-app-name}
-   QA_SPACE_NAME: ${qa-stage.parameters.space}
-   QA_ORG_NAME: ${qa-stage.parameters.organization}
-   QA_REGION_NAME: ${qa-stage.parameters.region}
-   PROD_APP_NAME: ${prod-stage.parameters.orders-app-name}
-   PROD_SPACE_NAME: ${prod-stage.parameters.space}
-   PROD_ORG_NAME: ${prod-stage.parameters.organization}
-   PROD_REGION_NAME: ${prod-stage.parameters.region}
+      DEV_APP_NAME: ${dev-stage.parameters.orders-app-name}
+      DEV_SPACE_NAME: ${dev-stage.parameters.space}
+      DEV_ORG_NAME: ${dev-stage.parameters.organization}
+      DEV_REGION_NAME: ${dev-stage.parameters.region}
+      QA_APP_NAME: ${qa-stage.parameters.orders-app-name}
+      QA_SPACE_NAME: ${qa-stage.parameters.space}
+      QA_ORG_NAME: ${qa-stage.parameters.organization}
+      QA_REGION_NAME: ${qa-stage.parameters.region}
+      PROD_APP_NAME: ${prod-stage.parameters.orders-app-name}
+      PROD_SPACE_NAME: ${prod-stage.parameters.space}
+      PROD_ORG_NAME: ${prod-stage.parameters.organization}
+      PROD_REGION_NAME: ${prod-stage.parameters.region}
 
 #Slack
 messaging:
@@ -83,8 +83,8 @@ messaging:
 
 #Sauce Laps
 test:
- capability: saucelabs
- metadata: saucelabs.yml
+  capability: saucelabs
+  metadata: saucelabs.yml
 
 #Deployment
 dev-stage:
@@ -96,9 +96,8 @@ qa-stage:
   schema: stage.json
   parameters:
     space: qa
-    
+
 prod-stage:
   schema: stage.json
   parameters:
     space: prod
-
