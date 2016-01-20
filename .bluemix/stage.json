@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "MicroServices Deploy Stage",
+    "description": "Feb Demo Microservices Stage Schema",
+    "type": "object",
+    "properties": {
+        "region": {
+            "description": "The bluemix region",
+            "type": "string"
+        },
+        "organization": {
+            "description": "The bluemix org",
+            "type": "string"
+        },
+       "space": {
+            "description": "The bluemix space",
+            "type": "string"
+        },
+       "orders-app-name": {
+            "description": "orders app name",
+            "type": "string"
+        },
+       "catalog-app-name": {
+            "description": "catalog app name",
+            "type": "string"
+        },
+       "ui-app-name": {
+            "description": "ui app name",
+            "type": "string"
+        }
+    },
+    "required": ["region", "organization", "space", "orders-app-name", "catalog-app-name", "ui-app-name"]
+}
