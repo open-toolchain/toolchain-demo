@@ -89,15 +89,18 @@ test:
 #Deployment
 dev-stage:
   schema: stage.json
+  capability-category: pipeline
   parameters:
     space: dev
 
 qa-stage:
   schema: stage.json
+  capability-category: pipeline
   parameters:
     space: qa
 
 prod-stage:
   schema: stage.json
+  capability-category: pipeline
   parameters:
     space: prod

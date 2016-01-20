@@ -29,5 +29,8 @@
             "type": "string"
         }
     },
-    "required": ["region", "organization", "space", "orders-app-name", "catalog-app-name", "ui-app-name"]
+    "required": ["region", "organization", "space", "orders-app-name", "catalog-app-name", "ui-app-name"],
+    "formValidator" : {
+      "url": "https://formvalidator.com"
+    }
 }
