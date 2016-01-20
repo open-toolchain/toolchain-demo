@@ -2,6 +2,10 @@
 name: Interconnect Toolchain Demo
 description: A ToolChain to end all toolchains
 image: image.png
+required:
+ - catalog-api.repo
+ - orders-api.repo
+ - ui.repo
 
 # Github repos
 catalog-api.repo:
