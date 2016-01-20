@@ -33,52 +33,46 @@ ui.build:
  env: 
    SAUCE_USER: ${test.parameters.username}
    API_KEY: ${test.parameters.key}
-   DEV_APP_NAME: ${dev-stage.parameters.ui-app-name}
-   DEV_SPACE_NAME: ${dev-stage.parameters.space}
-   DEV_ORG_NAME: ${dev-stage.parameters.organization}
-   DEV_REGION_NAME: ${dev-stage.parameters.region}
-   QA_APP_NAME: ${qa-stage.parameters.ui-app-name}
-   QA_SPACE_NAME: ${qa-stage.parameters.space}
-   QA_ORG_NAME: ${qa-stage.parameters.organization}
-   QA_REGION_NAME: ${qa-stage.parameters.region}
-   PROD_APP_NAME: ${prod-stage.parameters.ui-app-name}
-   PROD_SPACE_NAME: ${prod-stage.parameters.space}
-   PROD_ORG_NAME: ${prod-stage.parameters.organization}
-   PROD_REGION_NAME: ${prod-stage.parameters.region}
+   APP_NAME: ${deploy.parameters.ui-app-name}
+   DEV_SPACE_NAME: ${deploy.parameters.dev-space}
+   DEV_ORG_NAME: ${deploy.parameters.dev-organization}
+   DEV_REGION_NAME: ${deploy.parameters.dev-region}
+   QA_SPACE_NAME: ${deploy.parameters.qa-space}
+   QA_ORG_NAME: ${deploy.parameters.qa-organization}
+   QA_REGION_NAME: ${deploy.parameters.qa-region}
+   PROD_SPACE_NAME: ${deploy.parameters.prod-space}
+   PROD_ORG_NAME: ${deploy.parameters.prod-organization}
+   PROD_REGION_NAME: ${deploy.parameters.prod-region}
 
 catalog-api.build:
-    capability: pipeline
-    metadata: catalog-api.pipeline.yml
-    env:
-      DEV_APP_NAME: ${dev-stage.parameters.catalog-app-name}
-      DEV_SPACE_NAME: ${dev-stage.parameters.space}
-      DEV_ORG_NAME: ${dev-stage.parameters.organization}
-      DEV_REGION_NAME: ${dev-stage.parameters.region}
-      QA_APP_NAME: ${qa-stage.parameters.catalog-app-name}
-      QA_SPACE_NAME: ${qa-stage.parameters.space}
-      QA_ORG_NAME: ${qa-stage.parameters.organization}
-      QA_REGION_NAME: ${qa-stage.parameters.region}
-      PROD_APP_NAME: ${prod-stage.parameters.catalog-app-name}
-      PROD_SPACE_NAME: ${prod-stage.parameters.space}
-      PROD_ORG_NAME: ${prod-stage.parameters.organization}
-      PROD_REGION_NAME: ${prod-stage.parameters.region}
+ capability: pipeline
+ metadata: catalog-api.pipeline.yml
+ env:
+   APP_NAME: ${deploy.parameters.catalog-app-name}
+   DEV_SPACE_NAME: ${deploy.parameters.dev-space}
+   DEV_ORG_NAME: ${deploy.parameters.dev-organization}
+   DEV_REGION_NAME: ${deploy.parameters.dev-region}
+   QA_SPACE_NAME: ${deploy.parameters.qa-space}
+   QA_ORG_NAME: ${deploy.parameters.qa-organization}
+   QA_REGION_NAME: ${deploy.parameters.qa-region}
+   PROD_SPACE_NAME: ${deploy.parameters.prod-space}
+   PROD_ORG_NAME: ${deploy.parameters.prod-organization}
+   PROD_REGION_NAME: ${deploy.parameters.prod-region}
 
 orders-api.build:
-    capability: pipeline
-    metadata: order-api.pipeline.yml
-    env:
-      DEV_APP_NAME: ${dev-stage.parameters.orders-app-name}
-      DEV_SPACE_NAME: ${dev-stage.parameters.space}
-      DEV_ORG_NAME: ${dev-stage.parameters.organization}
-      DEV_REGION_NAME: ${dev-stage.parameters.region}
-      QA_APP_NAME: ${qa-stage.parameters.orders-app-name}
-      QA_SPACE_NAME: ${qa-stage.parameters.space}
-      QA_ORG_NAME: ${qa-stage.parameters.organization}
-      QA_REGION_NAME: ${qa-stage.parameters.region}
-      PROD_APP_NAME: ${prod-stage.parameters.orders-app-name}
-      PROD_SPACE_NAME: ${prod-stage.parameters.space}
-      PROD_ORG_NAME: ${prod-stage.parameters.organization}
-      PROD_REGION_NAME: ${prod-stage.parameters.region}
+ capability: pipeline
+ metadata: order-api.pipeline.yml
+ env:
+   APP_NAME: ${deploy.parameters.orders-app-name}
+   DEV_SPACE_NAME: ${deploy.parameters.dev-space}
+   DEV_ORG_NAME: ${deploy.parameters.dev-organization}
+   DEV_REGION_NAME: ${deploy.parameters.dev-region}
+   QA_SPACE_NAME: ${deploy.parameters.qa-space}
+   QA_ORG_NAME: ${deploy.parameters.qa-organization}
+   QA_REGION_NAME: ${deploy.parameters.qa-region}
+   PROD_SPACE_NAME: ${deploy.parameters.prod-space}
+   PROD_ORG_NAME: ${deploy.parameters.prod-organization}
+   PROD_REGION_NAME: ${deploy.parameters.prod-region}
 
 #Slack
 messaging:
@@ -91,20 +85,10 @@ test:
   metadata: saucelabs.yml
 
 #Deployment
-dev-stage:
-  schema: stage.json
+deploy:
+  schema: deploy.json
   capability-category: pipeline
   parameters:
-    space: dev
-
-qa-stage:
-  schema: stage.json
-  capability-category: pipeline
-  parameters:
-    space: qa
-
-prod-stage:
-  schema: stage.json
-  capability-category: pipeline
-  parameters:
-    space: prod
+    dev-space: dev
+    qa-space: qa
+    prod-space: prod
