@@ -14,18 +14,21 @@ catalog-api.repo:
   parameters:
     name: catalog-api
     fork: skaegi/Microservices_CatalogAPI
+    has_issues: false
 
 orders-api.repo:
   capability: github
   parameters:
     name: order-api
     fork: skaegi/Microservices_OrdersAPI
+    has_issues: false
 
 ui.repo:
   capability: github
   parameters:
     name: ui
     fork: skaegi/Microservices_UI
+    has_issues: true
 
 # Pipelines
 ui.build:
@@ -86,20 +89,11 @@ test:
   metadata: saucelabs.yml
 
 #Web IDE
-catalog-api.webide:
+# WebIDE
+webide:
   capability: orion
   parameters:
-    repo_url: ${catalog-api.repo.parameters.repo_url}
-
-orders-api.webide:
-  capability: orion
-  parameters:
-    repo_url: ${orders-api.repo.parameters.repo_url}
-
-ui.webide:
-  capability: orion
-  parameters:
-    repo_url: ${ui.repo.parameters.repo_url}
+    name: web IDE
 
 #Deployment
 deploy:
