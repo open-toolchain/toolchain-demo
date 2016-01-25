@@ -55,6 +55,6 @@
     },
     "required": ["dev-region", "dev-organization", "dev-space", "qa-region", "qa-organization", "qa-space", "prod-region", "prod-organization", "prod-space", "orders-app-name", "catalog-app-name", "ui-app-name"],
     "formValidator" : {
-      "url": "https://formvalidator.com"
+      "url": "https://devops.stage1.ng.bluemix.net/develop/setup/bm-helper/helper.html"
     }
 }
