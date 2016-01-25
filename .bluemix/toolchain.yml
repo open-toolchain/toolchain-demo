@@ -10,22 +10,22 @@ required:
 
 # Github repos
 catalog-api.repo:
-    capability: github
-    parameters:
-        name: catalog-api
-        fork: skaegi/Microservices_CatalogAPI
+  capability: github
+  parameters:
+    name: catalog-api
+    fork: skaegi/Microservices_CatalogAPI
 
 orders-api.repo:
-    capability: github
-    parameters:
-        name: order-api
-        fork: skaegi/Microservices_OrdersAPI
+  capability: github
+  parameters:
+    name: order-api
+    fork: skaegi/Microservices_OrdersAPI
 
 ui.repo:
-    capability: github
-    parameters:
-        name: ui
-        fork: skaegi/Microservices_UI
+  capability: github
+  parameters:
+    name: ui
+    fork: skaegi/Microservices_UI
 
 # Pipelines
 ui.build:
@@ -84,6 +84,22 @@ messaging:
 test:
   capability: saucelabs
   metadata: saucelabs.yml
+
+#Web IDE
+catalog-api.webide:
+  capability: orion
+  parameters:
+    repo_url: ${catalog-api.repo.parameters.repo_url}
+
+orders-api.webide:
+  capability: orion
+  parameters:
+    repo_url: ${orders-api.repo.parameters.repo_url}
+
+ui.webide:
+  capability: orion
+  parameters:
+    repo_url: ${ui.repo.parameters.repo_url}
 
 #Deployment
 deploy:
