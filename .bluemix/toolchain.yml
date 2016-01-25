@@ -10,6 +10,7 @@ catalog-api.repo:
         name: catalog-api
         fork: skaegi/Microservices_CatalogAPI
         visibility: private
+        has_issues: false
 
 order-api.repo:
     tool: github
@@ -17,6 +18,7 @@ order-api.repo:
         name: order-api
         fork: skaegi/Microservices_OrdersAPI
         visibility: private
+        has_issues: false
         
 ui.repo:
     tool: github
@@ -24,6 +26,7 @@ ui.repo:
         name: ui
         fork: skaegi/Microservices_UI
         visibility: private
+        has_issues: true
 
 # Pipelines
 ui.build:
