@@ -92,14 +92,14 @@ test:
   metadata: saucelabs.yml
 
 #Web IDE
-webide:
-  capability: orion
-  parameters:
-    name: web IDE
-    repo-url:
-     - ${catalog-api-repo.parameters.repo-url}
-     - ${orders-api-repo.parameters.repo-url}
-     - ${ui-repo.parameters.repo-url}
+#webide:
+#  capability: orion
+#  parameters:
+#    name: web IDE
+#    repo-url:
+#     - ${catalog-api-repo.parameters.repo-url}
+#     - ${orders-api-repo.parameters.repo-url}
+#     - ${ui-repo.parameters.repo-url}
 
 #Deployment
 deploy:
