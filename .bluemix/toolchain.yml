@@ -92,7 +92,6 @@ test:
   metadata: saucelabs.yml
 
 #Web IDE
-# WebIDE
 webide:
   capability: orion
   parameters:
