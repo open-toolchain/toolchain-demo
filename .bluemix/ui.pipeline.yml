@@ -1,41 +1,100 @@
 ---
 stages:
-- name: Build Stage
+- name: BUILD
   inputs:
   - type: git
     branch: master
     url: ${GIT_REPO_URL}
-    token: ${GIT_REPO_TOKEN}
+    token: ${GIT_REPO_TOKEN}	
   triggers:
   - type: commit
   jobs:
   - name: Build
     type: builder
-- name: Deploy Stage
+- name: DEV
   inputs:
   - type: job
-    stage: Build Stage
+    stage: BUILD
     job: Build
   triggers:
   - type: stage
   properties:
   - name: CF_APP_NAME
-    value: 'undefined'
+    value: undefined
     type: text
   - name: APP_URL
-    value: 'undefined'
+    value: undefined
     type: text
   jobs:
   - name: Deploy to dev
     type: deployer
     target:
-      url: ${CF_TARGET_URL}
-      organization: ${CF_ORGANIZATION}
-      space: ${CF_SPACE}
-      application: ${CF_APP}
+      url: ${DEV_TARGET_URL}
+      organization: ${DEV_ORG_NAME}
+      space: ${DEV_SPACE_NAME}
+      application: ${APP_NAME}
     script: |-
       #!/bin/bash
-      cf push "${CF_APP}"
-      export CF_APP_NAME="$CF_APP"
+      # Push app
+      export CF_APP_NAME="$CF_APP-dev"
+      cf push "${CF_APP_NAME}"
       # View logs
-      #cf logs "${CF_APP}" --recent
+      #cf logs "${CF_APP_NAME}" --recent
+- name: QA
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  properties:
+  - name: CF_APP_NAME
+    value: undefined
+    type: text
+  - name: APP_URL
+    value: undefined
+    type: text
+  jobs:
+  - name: Deploy to QA
+    type: deployer
+    target:
+      url: ${QA_TARGET_URL}
+      organization: ${QA_ORG_NAME}
+      space: ${QA_SPACE_NAME}
+      application: ${APP_NAME}
+    script: |-
+      #!/bin/bash
+      # Push app
+      export CF_APP_NAME="$CF_APP-qa"
+      cf push "${CF_APP_NAME}"
+      # View logs
+      #cf logs "${CF_APP_NAME}" --recent
+- name: PROD
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  properties:
+  - name: CF_APP_NAME
+    value: undefined
+    type: text
+  - name: APP_URL
+    value: undefined
+    type: text
+  jobs:
+  - name: Deploy to prod
+    type: deployer
+    target:
+      url: ${PROD_TARGET_URL}
+      organization: ${PROD_ORG_NAME}
+      space: ${PROD_SPACE_NAME}
+      application: ${APP_NAME}
+    script: |-
+      #!/bin/bash
+      # Push app
+      export CF_APP_NAME="$CF_APP"
+      cf push "${CF_APP_NAME}"
+      # View logs
+      #cf logs "${CF_APP_NAME}" --recent
