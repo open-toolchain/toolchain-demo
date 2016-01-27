@@ -96,7 +96,7 @@ webide:
   capability: orion
   parameters:
     name: web IDE
-    repo-url:
+    repo-urls:
      - ${catalog-api-repo.parameters.repo-url}
      - ${orders-api-repo.parameters.repo-url}
      - ${ui-repo.parameters.repo-url}
