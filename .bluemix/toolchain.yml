@@ -35,7 +35,7 @@ ui-build:
  capability: pipeline
  metadata: ui.pipeline.yml
  env:
-   REPO_URL: ${ui-repo.parameters.repo-url}
+   GIT_REPO_URL: ${ui-repo.parameters.repo-url}
    SAUCE_USER: ${test.parameters.username}
    API_KEY: ${test.parameters.key}
    APP_NAME: ${deploy.parameters.ui-app-name}
@@ -53,7 +53,7 @@ catalog-api-build:
  capability: pipeline
  metadata: catalog-api.pipeline.yml
  env:
-   REPO_URL: ${catalog-api-repo.parameters.repo-url}
+   GIT_REPO_URL: ${catalog-api-repo.parameters.repo-url}
    APP_NAME: ${deploy.parameters.catalog-app-name}
    DEV_SPACE_NAME: ${deploy.parameters.dev-space}
    DEV_ORG_NAME: ${deploy.parameters.dev-organization}
@@ -69,7 +69,7 @@ orders-api-build:
  capability: pipeline
  metadata: order-api.pipeline.yml
  env:
-   REPO_URL: ${orders-api-repo.parameters.repo-url}
+   GIT_REPO_URL: ${orders-api-repo.parameters.repo-url}
    APP_NAME: ${deploy.parameters.orders-app-name}
    DEV_SPACE_NAME: ${deploy.parameters.dev-space}
    DEV_ORG_NAME: ${deploy.parameters.dev-organization}
