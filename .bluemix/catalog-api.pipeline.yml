@@ -32,7 +32,7 @@ stages:
       url: ${DEV_TARGET_URL}
       organization: ${DEV_ORG_NAME}
       space: ${DEV_SPACE_NAME}
-      application: ${APP_NAME}
+      application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
       cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
