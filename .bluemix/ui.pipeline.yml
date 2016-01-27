@@ -32,7 +32,7 @@ stages:
       url: ${DEV_TARGET_URL}
       organization: ${DEV_ORG_NAME}
       space: ${DEV_SPACE_NAME}
-      application: ${APP_NAME}
+      application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
       # Push app
@@ -61,7 +61,7 @@ stages:
       url: ${QA_TARGET_URL}
       organization: ${QA_ORG_NAME}
       space: ${QA_SPACE_NAME}
-      application: ${APP_NAME}
+      application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
       # Push app
@@ -90,7 +90,7 @@ stages:
       url: ${PROD_TARGET_URL}
       organization: ${PROD_ORG_NAME}
       space: ${PROD_SPACE_NAME}
-      application: ${APP_NAME}
+      application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
       # Push app
