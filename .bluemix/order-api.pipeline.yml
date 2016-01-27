@@ -30,8 +30,8 @@ stages:
     type: deployer
     target:
       region_id: ${DEV_REGION_NAME}
-      organization: ${DEV_ORG_NAME}
-      space: ${DEV_SPACE_NAME}
+      organization_guid: ${DEV_ORG_NAME}
+      space_guid: ${CF_SPACE_ID}
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
@@ -68,8 +68,8 @@ stages:
     type: deployer
     target:
       region_id: ${QA_REGION_NAME}
-      organization: ${QA_ORG_NAME}
-      space: ${QA_SPACE_NAME}
+      organization_guid: ${DEV_ORG_NAME}
+      space_guid: ${CF_SPACE_ID}
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
@@ -106,8 +106,8 @@ stages:
     type: deployer
     target:
       region_id: ${PROD_REGION_NAME}
-      organization: ${PROD_ORG_NAME}
-      space: ${PROD_SPACE_NAME}
+      organization_guid: ${DEV_ORG_NAME}
+      space_guid: ${CF_SPACE_ID}
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
