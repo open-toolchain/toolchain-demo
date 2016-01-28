@@ -59,65 +59,90 @@
           "url": "https://devops.stage1.ng.bluemix.net/develop/setup/bm-helper/helper.html"
         },
         "view": [
-            {
-                "type": "text",
-                "title": "Orders App Name",
-                "key": "orders-app-name"
+           {
+              "type": "text",
+              "title": "Orders App Name",
+              "key": "orders-app-name"
             },
             {
-                "type": "text",
-                "title": "Catalog App Name",
-                "key": "catalog-app-name"
+              "type": "text",
+              "title": "Catalog App Name",
+              "key": "catalog-app-name"
             },
             {
-                "type": "text",
-                "title": "UI App Name",
-                "key": "ui-app-name"
+              "type": "text",
+              "title": "UI App Name",
+              "key": "ui-app-name"
             },
             {
-                "type": "select",
-                "title": "Dev Region",
-                "key": "dev-region"
-            },
-            {
-                "type": "select",
-                "title": "Dev Organization",
-                "key": "dev-organization"
-            },
-            {
-                "type": "select",
-                "title": "Dev Space",
-                "key": "dev-space"
-            },
-            {
-                "type": "select",
-                "title": "QA Region",
-                "key": "qa-region"
-            },
-            {
-                "type": "select",
-                "title": "QA Organization",
-                "key": "qa-organization"
-            },
-            {
-                "type": "select",
-                "title": "QA Space",
-                "key": "qa-space"
-            },
-            {
-                "type": "select",
-                "title": "Prod Region",
-                "key": "prod-region"
-            },
-            {
-                "type": "select",
-                "title": "Prod Organization",
-                "key": "prod-organization"
-            },
-            {
-                "type": "select",
-                "title": "Prod Space",
-                "key": "prod-space"
+                "type": "table",
+                "columnCount": 4,
+                "items": [
+                    {
+                      "type": "label",
+                      "title": ""
+                    },
+                    {
+                      "type": "label",
+                      "title": "Region"
+                    },
+                    {
+                      "type": "label",
+                      "title": "Organization"
+                    },
+                    {
+                      "type": "label",
+                      "title": "Space"
+                    },
+                    {
+                      "type": "label",
+                      "title": "Dev Stage"
+                    },
+                    {
+                      "type": "select",
+                      "key": "dev-region"
+                    },
+                    {
+                      "type": "select",
+                      "key": "dev-organization"
+                    },
+                    {
+                      "type": "select",
+                      "key": "dev-space"
+                    },
+                    {
+                      "type": "label",
+                      "title": "Test Stage"
+                    },
+                    {
+                      "type": "select",
+                      "key": "qa-region"
+                    },
+                    {
+                      "type": "select",
+                      "key": "qa-organization"
+                    },
+                    {
+                      "type": "select",
+                      "key": "qa-space"
+                    },
+                    {
+                      "type": "label",
+                      "title": "Prod Stage"
+                    },
+                    {
+                      "type": "select",
+                      "key": "prod-region"
+                    },
+                    {
+                      "type": "select",
+                      "key": "prod-organization"
+                    },
+                    {
+                      "type": "select",
+                      "key": "prod-space"
+                    }
+                ]
             }
         ]
     }
