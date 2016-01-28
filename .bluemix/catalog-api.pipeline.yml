@@ -75,7 +75,7 @@ stages:
       application: ${CF_APP_NAME}
     ENABLE_COMPARE_APPS: 'false'
     DRA_MODE: 'false'
-    APPLICATION_NAME: catalog-api_4-dev
+    APPLICATION_NAME: ${CF_APP_NAME}
     APP_DESTINATION: Alpha
     ENABLE_BOUND_SERVICE: 'true'
     APP_NOTDESTINATION: Test
@@ -101,6 +101,24 @@ stages:
       cf uups catalogAPI -p '{"host":"'$HOST'"}'
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
+- name: Functional Test
+    type: tester
+    extension_id: ibm.devops.services.pipeline.dra_mocha_fvt
+    target:
+      region_id: ${QA_REGION_ID}
+      organization: ${DEV_ORG_NAME}
+      space: ${DEV_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    MINIMUM_SUCCESS_RATE: '100'
+    TEST_LOG_FILE: tests/fvt/mochafvttest.json
+    ADVISORY_MODE: 'false'
+    CHECK_TEST_REGRESSION: 'true'
+    COMMAND: |-
+      #!/bin/bash
+
+      npm install
+      grunt dev-fvt -f
+    TEST_TOOL_SELECT: mocha	  
 - name: TEST
   inputs:
   - type: job
@@ -117,16 +135,44 @@ stages:
     type: text
   - name: DRA_SERVER
     value: https://dra.stage1.mybluemix.net
+    type: text
+  - name: CATALOG_API_TEST_SERVER
+    value: ''
     type: text	
   jobs:
-  - name: Deploy to test
+  - name: Set App name
     type: deployer
     target:
       region_id: ${QA_REGION_ID}
-      organization: ${DEV_ORG_NAME}
-      space: ${DEV_SPACE_NAME}
+      organization: ${QA_ORG_NAME}
+      space: ${QA_SPACE_NAME}
       application: ${CF_APP_NAME}
     script: |-
+      #!/bin/bash
+      export CF_APP_NAME="$CF_APP-test"
+  - name: Pre Deploy
+    type: deployer
+    extension_id: ibm.devops.services.pipeline.dra_deploy_extn
+    target:
+      region_id: ${QA_REGION_ID}
+      organization: ${QA_ORG_NAME}
+      space: ${QA_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    ENABLE_COMPARE_APPS: 'true'
+    DRA_MODE: 'false'
+    APPLICATION_NAME: ${CF_APP_NAME}
+    APP_DESTINATION: Test
+    ENABLE_BOUND_SERVICE: 'true'
+    APP_NOTDESTINATION: Alpha
+    COMMAND: '#!/bin/bash'
+  - name: Deploy to Test
+    type: deployer
+    target:
+      region_id: ${QA_REGION_ID}
+      organization: ${QA_ORG_NAME}
+      space: ${QA_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    script: |
       #!/bin/bash
       cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
       # Publish catalogAPI
@@ -134,7 +180,6 @@ stages:
       cf cups catalogAPI
       fi
       # Push app
-      export CF_APP_NAME="$CF_APP-qa"
       cf push "${CF_APP_NAME}"
       # Update catalogAPI
       HOST=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
@@ -171,6 +216,31 @@ stages:
     value: https://dra.stage1.mybluemix.net
     type: text
   jobs:
+  - name: Set App name
+    type: deployer
+    target:
+      region_id: ${PROD_REGION_ID}
+      organization: ${PROD_ORG_NAME}
+      space: ${PROD_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    script: |-
+      #!/bin/bash
+      export CF_APP_NAME="${CF_APP}_${BUILD_NUMBER}"
+  - name: Pre Deploy
+    type: deployer
+    extension_id: ibm.devops.services.pipeline.dra_deploy_extn
+    target:
+      region_id: ${PROD_REGION_ID}
+      organization: ${PROD_ORG_NAME}
+      space: ${PROD_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    ENABLE_COMPARE_APPS: 'true'
+    DRA_MODE: 'false'
+    APPLICATION_NAME: ${CF_APP_NAME}
+    APP_DESTINATION: Prod
+    ENABLE_BOUND_SERVICE: 'true'
+    APP_NOTDESTINATION: Test
+    COMMAND: '#!/bin/bash'	  
   - name: Deploy Single Instance
     type: deployer
     target:
@@ -185,9 +255,7 @@ stages:
       if ! cf service catalogAPI > /dev/null; then
       cf cups catalogAPI
       fi
-      CF_APP_NAME="${CF_APP}_${BUILD_NUMBER}"
       cf push "${CF_APP_NAME}" --no-route -i 1
-      export CF_APP_NAME
   - name: Begin AD
     type: deployer
     extension_id: ibm.devops.services.pipeline.devops.ad_start
