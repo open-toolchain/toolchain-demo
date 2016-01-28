@@ -1,0 +1,60 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "MicroServices Deploy Stage",
+    "description": "Feb Demo Microservices Stage Schema",
+    "type": "object",
+    "properties": {
+        "dev-region": {
+            "description": "The bluemix region",
+            "type": "string"
+        },
+        "dev-organization": {
+            "description": "The bluemix org",
+            "type": "string"
+        },
+       "dev-space": {
+            "description": "The bluemix space",
+            "type": "string"
+        },
+        "qa-region": {
+            "description": "The bluemix region",
+            "type": "string"
+        },
+        "qa-organization": {
+            "description": "The bluemix org",
+            "type": "string"
+        },
+       "qa-space": {
+            "description": "The bluemix space",
+            "type": "string"
+        },
+        "prod-region": {
+            "description": "The bluemix region",
+            "type": "string"
+        },
+        "prod-organization": {
+            "description": "The bluemix org",
+            "type": "string"
+        },
+       "prod-space": {
+            "description": "The bluemix space",
+            "type": "string"
+        },
+        "orders-app-name": {
+            "description": "orders app name",
+            "type": "string"
+        },
+       "catalog-app-name": {
+            "description": "catalog app name",
+            "type": "string"
+        },
+       "ui-app-name": {
+            "description": "ui app name",
+            "type": "string"
+        }
+    },
+    "required": ["dev-region", "dev-organization", "dev-space", "qa-region", "qa-organization", "qa-space", "prod-region", "prod-organization", "prod-space", "orders-app-name", "catalog-app-name", "ui-app-name"],
+    "formValidator" : {
+      "url": "https://devops.stage1.ng.bluemix.net/develop/setup/bm-helper/helper.html"
+    }
+}
