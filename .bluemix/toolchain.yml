@@ -41,13 +41,13 @@ ui-build:
     CF_APP_NAME: ${deploy.parameters.ui-app-name}
     DEV_SPACE_NAME: ${deploy.parameters.dev-space}
     DEV_ORG_NAME: ${deploy.parameters.dev-organization}
-    DEV_REGION_NAME: ${deploy.parameters.dev-region}
+    DEV_REGION_ID: ${deploy.parameters.dev-region}
     QA_SPACE_NAME: ${deploy.parameters.qa-space}
     QA_ORG_NAME: ${deploy.parameters.qa-organization}
-    QA_REGION_NAME: ${deploy.parameters.qa-region}
+    QA_REGION_ID: ${deploy.parameters.qa-region}
     PROD_SPACE_NAME: ${deploy.parameters.prod-space}
     PROD_ORG_NAME: ${deploy.parameters.prod-organization}
-    PROD_REGION_NAME: ${deploy.parameters.prod-region}
+    PROD_REGION_ID: ${deploy.parameters.prod-region}
 
 catalog-api-build:
   capability: pipeline
@@ -57,13 +57,13 @@ catalog-api-build:
     CF_APP_NAME: ${deploy.parameters.catalog-app-name}
     DEV_SPACE_NAME: ${deploy.parameters.dev-space}
     DEV_ORG_NAME: ${deploy.parameters.dev-organization}
-    DEV_REGION_NAME: ${deploy.parameters.dev-region}
+    DEV_REGION_ID: ${deploy.parameters.dev-region}
     QA_SPACE_NAME: ${deploy.parameters.qa-space}
     QA_ORG_NAME: ${deploy.parameters.qa-organization}
-    QA_REGION_NAME: ${deploy.parameters.qa-region}
+    QA_REGION_ID: ${deploy.parameters.qa-region}
     PROD_SPACE_NAME: ${deploy.parameters.prod-space}
     PROD_ORG_NAME: ${deploy.parameters.prod-organization}
-    PROD_REGION_NAME: ${deploy.parameters.prod-region}
+    PROD_REGION_ID: ${deploy.parameters.prod-region}
 
 orders-api-build:
   capability: pipeline
@@ -73,13 +73,13 @@ orders-api-build:
     CF_APP_NAME: ${deploy.parameters.orders-app-name}
     DEV_SPACE_NAME: ${deploy.parameters.dev-space}
     DEV_ORG_NAME: ${deploy.parameters.dev-organization}
-    DEV_REGION_NAME: ${deploy.parameters.dev-region}
+    DEV_REGION_ID: ${deploy.parameters.dev-region}
     QA_SPACE_NAME: ${deploy.parameters.qa-space}
     QA_ORG_NAME: ${deploy.parameters.qa-organization}
-    QA_REGION_NAME: ${deploy.parameters.qa-region}
+    QA_REGION_ID: ${deploy.parameters.qa-region}
     PROD_SPACE_NAME: ${deploy.parameters.prod-space}
     PROD_ORG_NAME: ${deploy.parameters.prod-organization}
-    PROD_REGION_NAME: ${deploy.parameters.prod-region}
+    PROD_REGION_ID: ${deploy.parameters.prod-region}
 
 #Timeline Analytics
 events:
