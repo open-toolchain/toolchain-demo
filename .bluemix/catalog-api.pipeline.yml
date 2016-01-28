@@ -8,9 +8,35 @@ stages:
     token: ${GIT_REPO_TOKEN}	
   triggers:
   - type: commit
+  properties:
+  - name: DRA_SERVER
+    value: https://dra.stage1.mybluemix.net
+    type: text  
   jobs:
   - name: Build
     type: builder
+  - name: Unit Test
+    type: tester
+    extension_id: ibm.devops.services.pipeline.dra_mocha_test
+    target:
+      region_id: ${DEV_REGION_ID}
+      organization: ${DEV_ORG_NAME}
+      space: ${DEV_SPACE_NAME}
+    MINIMUM_SUCCESS_RATE: '100'
+    TEST_LOG_FILE: tests/server/mochatest.json
+    MINIMUM_COVERAGE_RATE: '50'
+    ADVISORY_MODE: 'false'
+    COVERAGE_TOOL_SELECT: istanbul
+    COVERAGE_REGRESSION_THRESHOLD: '2'
+    CHECK_TEST_REGRESSION: 'true'
+    COVERAGE_LOG_FILE: tests/server/coverage/reports/coverage-summary.json
+    COMMAND: |
+      #!/bin/bash
+
+      npm install
+      grunt dev-test-cov -f
+    CHECK_COVERAGE_REGRESSION: 'true'
+    TEST_TOOL_SELECT: mocha	
 - name: DEV
   inputs:
   - type: job
@@ -25,8 +51,11 @@ stages:
   - name: APP_URL
     value: undefined
     type: text
+  - name: DRA_SERVER
+    value: https://dra.stage1.mybluemix.net
+    type: text	
   jobs:
-  - name: Deploy to dev
+  - name: Set App name
     type: deployer
     target:
       region_id: ${DEV_REGION_ID}
@@ -35,13 +64,37 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
+      export CF_APP_NAME="$CF_APP-dev"
+  - name: Pre Deploy
+    type: deployer
+    extension_id: ibm.devops.services.pipeline.dra_deploy_extn
+    target:
+      region_id: ${DEV_REGION_ID}
+      organization: ${DEV_ORG_NAME}
+      space: ${DEV_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    ENABLE_COMPARE_APPS: 'false'
+    DRA_MODE: 'false'
+    APPLICATION_NAME: catalog-api_4-dev
+    APP_DESTINATION: Alpha
+    ENABLE_BOUND_SERVICE: 'true'
+    APP_NOTDESTINATION: Test
+    COMMAND: '#!/bin/bash'
+  - name: Deploy to Dev
+    type: deployer
+    target:
+      region_id: ${DEV_REGION_ID}
+      organization: ${DEV_ORG_NAME}
+      space: ${DEV_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    script: |
+      #!/bin/bash
       cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
       # Publish catalogAPI
       if ! cf service catalogAPI > /dev/null; then
       cf cups catalogAPI
       fi
       # Push app
-      export CF_APP_NAME="$CF_APP-dev"
       cf push "${CF_APP_NAME}"
       # Update catalogAPI
       HOST=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
@@ -62,6 +115,9 @@ stages:
   - name: APP_URL
     value: undefined
     type: text
+  - name: DRA_SERVER
+    value: https://dra.stage1.mybluemix.net
+    type: text	
   jobs:
   - name: Deploy to test
     type: deployer
@@ -110,7 +166,10 @@ stages:
     type: text
   - name: TEST_RESULT_FOR_AD
     value: ''
-    type: text	
+    type: text
+  - name: DRA_SERVER
+    value: https://dra.stage1.mybluemix.net
+    type: text
   jobs:
   - name: Deploy Single Instance
     type: deployer
