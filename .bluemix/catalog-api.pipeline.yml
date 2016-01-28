@@ -100,23 +100,23 @@ stages:
       cf uups catalogAPI -p '{"host":"'$HOST'"}'
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
-- name: Functional Test
-  type: tester
-  extension_id: ibm.devops.services.pipeline.dra_mocha_fvt
-  target:
-    region_id: ${QA_REGION_ID}
-    organization: ${DEV_ORG_NAME}
-    space: ${DEV_SPACE_NAME}
-    application: ${CF_APP_NAME}
-  MINIMUM_SUCCESS_RATE: '100'
-  TEST_LOG_FILE: tests/fvt/mochafvttest.json
-  ADVISORY_MODE: 'false'
-  CHECK_TEST_REGRESSION: 'true'
-  COMMAND: |-
-    #!/bin/bash
-    npm install
-    grunt dev-fvt -f
-  TEST_TOOL_SELECT: mocha
+  - name: Functional Test
+    type: tester
+    extension_id: ibm.devops.services.pipeline.dra_mocha_fvt
+    target:
+      region_id: ${QA_REGION_ID}
+      organization: ${DEV_ORG_NAME}
+      space: ${DEV_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    MINIMUM_SUCCESS_RATE: '100'
+    TEST_LOG_FILE: tests/fvt/mochafvttest.json
+    ADVISORY_MODE: 'false'
+    CHECK_TEST_REGRESSION: 'true'
+    COMMAND: |-
+      #!/bin/bash
+      npm install
+      grunt dev-fvt -f
+    TEST_TOOL_SELECT: mocha
 - name: TEST
   inputs:
   - type: job
