@@ -99,14 +99,8 @@ stages:
   - name: APP_URL
     value: undefined
     type: text
-  - name: ROUTE_HOSTNAME
-    value: mk-hello
-    type: text
   - name: ROUTE_DOMAIN
-    value: mybluemix.net
-    type: text
-  - name: PORT
-    value: '80'
+    value: stage1.mybluemix.net
     type: text
   - name: GROUP_SIZE
     value: '3'
@@ -133,7 +127,7 @@ stages:
       cf cups catalogAPI
       fi
       CF_APP_NAME="${CF_APP}_${BUILD_NUMBER}"
-      cf push "${CF_APP_NAME}" --no-route -i 1 -m 64M
+      cf push "${CF_APP_NAME}" --no-route -i 1
       export CF_APP_NAME
   - name: Begin AD
     type: deployer
