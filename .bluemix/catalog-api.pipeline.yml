@@ -48,7 +48,7 @@ stages:
       cf uups catalogAPI -p '{"host":"'$HOST'"}'
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
-- name: QA
+- name: TEST
   inputs:
   - type: job
     stage: BUILD
@@ -63,7 +63,7 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Deploy to QA
+  - name: Deploy to test
     type: deployer
     target:
       region_id: ${QA_REGION_ID}
@@ -99,8 +99,26 @@ stages:
   - name: APP_URL
     value: undefined
     type: text
+  - name: ROUTE_HOSTNAME
+    value: mk-hello
+    type: text
+  - name: ROUTE_DOMAIN
+    value: mybluemix.net
+    type: text
+  - name: PORT
+    value: '80'
+    type: text
+  - name: GROUP_SIZE
+    value: '3'
+    type: text
+  - name: TARGET_PLATFORM
+    value: CloudFoundry
+    type: text
+  - name: TEST_RESULT_FOR_AD
+    value: ''
+    type: text	
   jobs:
-  - name: Deploy to prod
+  - name: Deploy Single Instance
     type: deployer
     target:
       region_id: ${PROD_REGION_ID}
@@ -114,12 +132,37 @@ stages:
       if ! cf service catalogAPI > /dev/null; then
       cf cups catalogAPI
       fi
-      # Push app
-      export CF_APP_NAME="$CF_APP"
-      cf push "${CF_APP_NAME}"
+      CF_APP_NAME="${CF_APP}_${BUILD_NUMBER}"
+      cf push "${CF_APP_NAME}" --no-route -i 1 -m 64M
+      export CF_APP_NAME
+  - name: Begin AD
+    type: deployer
+    extension_id: ibm.devops.services.pipeline.devops.ad_start
+    target:
+      region_id: ${PROD_REGION_ID}
+      organization: ${PROD_ORG_NAME}
+      space: ${PROD_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    RAMPDOWN_DURATION: 1m
+    RAMPUP_DURATION: 1m
+    COMMAND: |-
+      #!/bin/bash
+      source ${EXT_DIR}/git_util.sh
+      git_retry clone https://github.com/Osthanes/update_service.git activedeploy
+      activedeploy/activedeploy_step_1.sh
       # Update catalogAPI
       HOST=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
       cf uups catalogAPI -p '{"host":"'$HOST'"}'
-      # View logs
-      #cf logs "${CF_APP_NAME}" --recent
-
+  - name: Complete AD
+    type: deployer
+    extension_id: ibm.devops.services.pipeline.devops.ad_finish
+    target:
+      region_id: ${PROD_REGION_ID}
+      organization: ${PROD_ORG_NAME}
+      space: ${PROD_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    COMMAND: |-
+      #!/bin/bash
+      source ${EXT_DIR}/git_util.sh
+      git_retry clone https://github.com/Osthanes/update_service.git activedeploy
+      activedeploy/activedeploy_step_2.sh
