@@ -5,13 +5,13 @@ stages:
   - type: git
     branch: master
     url: ${GIT_REPO_URL}
-    token: ${GIT_REPO_TOKEN}	
+    token: ${GIT_REPO_TOKEN}
   triggers:
   - type: commit
   properties:
   - name: DRA_SERVER
     value: https://dra.stage1.mybluemix.net
-    type: text  
+    type: text
   jobs:
   - name: Build
     type: builder
@@ -35,7 +35,7 @@ stages:
       npm install
       grunt dev-test-cov -f
     CHECK_COVERAGE_REGRESSION: 'true'
-    TEST_TOOL_SELECT: mocha	
+    TEST_TOOL_SELECT: mocha
 - name: DEV
   inputs:
   - type: job
@@ -52,7 +52,7 @@ stages:
     type: text
   - name: DRA_SERVER
     value: https://dra.stage1.mybluemix.net
-    type: text	
+    type: text
   jobs:
   - name: Set App name
     type: deployer
@@ -116,7 +116,7 @@ stages:
     #!/bin/bash
     npm install
     grunt dev-fvt -f
-  TEST_TOOL_SELECT: mocha	  
+  TEST_TOOL_SELECT: mocha
 - name: TEST
   inputs:
   - type: job
@@ -136,7 +136,7 @@ stages:
     type: text
   - name: CATALOG_API_TEST_SERVER
     value: ''
-    type: text	
+    type: text
   jobs:
   - name: Set App name
     type: deployer
@@ -238,7 +238,7 @@ stages:
     APP_DESTINATION: Prod
     ENABLE_BOUND_SERVICE: 'true'
     APP_NOTDESTINATION: Test
-    COMMAND: '#!/bin/bash'	  
+    COMMAND: '#!/bin/bash'
   - name: Deploy Single Instance
     type: deployer
     target:
