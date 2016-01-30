@@ -27,7 +27,7 @@ ui-repo:
   capability: github
   parameters:
     repo_name: ui
-    fork: skaegi/Microservices_UI
+    fork: hmagph/Microservices_UI
     has_issues: true
 
 # Pipelines
