@@ -6,5 +6,4 @@ applications:
   name: microservices-ui
   memory: 256M
   instances: 1
-  host: ms-UI-${random-word}
   path: .
