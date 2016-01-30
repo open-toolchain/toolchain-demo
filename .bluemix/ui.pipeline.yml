@@ -37,7 +37,11 @@ stages:
       #!/bin/bash
       # Push app
       export CF_APP_NAME="$CF_APP-dev"
-      cf push "${CF_APP_NAME}"
+      cf push "${CF_APP_NAME}" --nostart
+      CATALOG_APP="$CF_APP-catalog-dev"
+      CATALOG_URL=http://$(cf app $CATALOG_APP | grep urls: | awk '{print $2}')
+      cf set-env "${CF_APP_NAME}" "CATALOG_API_URL" "$CATALOG_URL"
+      cf start "${CF_APP_NAME}"
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
 - name: QA
