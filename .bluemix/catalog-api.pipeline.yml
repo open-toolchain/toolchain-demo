@@ -97,6 +97,7 @@ stages:
       cf push "${CF_APP_NAME}"
       # Update catalogAPI
       HOST=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
+      export APP_URL=$HOST
       cf uups catalogAPI -p '{"host":"'$HOST'"}'
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
@@ -114,6 +115,7 @@ stages:
     CHECK_TEST_REGRESSION: 'true'
     COMMAND: |-
       #!/bin/bash
+      export CATALOG_API_TEST_SERVER=$APP_URL
       npm install
       grunt dev-fvt -f
     TEST_TOOL_SELECT: mocha
@@ -133,9 +135,6 @@ stages:
     type: text
   - name: DRA_SERVER
     value: https://dra.stage1.mybluemix.net
-    type: text
-  - name: CATALOG_API_TEST_SERVER
-    value: ''
     type: text
   jobs:
   - name: Set App name
