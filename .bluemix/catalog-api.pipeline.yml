@@ -231,11 +231,11 @@ stages:
       organization: ${PROD_ORG_NAME}
       space: ${PROD_SPACE_NAME}
       application: ${CF_APP_NAME}
-    ENABLE_COMPARE_APPS: 'true'
+    ENABLE_COMPARE_APPS: 'false'
     DRA_MODE: 'false'
     APPLICATION_NAME: ${CF_APP_NAME}
     APP_DESTINATION: Prod
-    ENABLE_BOUND_SERVICE: 'true'
+    ENABLE_BOUND_SERVICE: 'false'
     APP_NOTDESTINATION: Test
     COMMAND: '#!/bin/bash'
   - name: Deploy Single Instance
