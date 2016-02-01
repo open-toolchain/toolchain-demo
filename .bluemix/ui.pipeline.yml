@@ -36,7 +36,7 @@ stages:
     script: |-
       #!/bin/bash
       # Push app
-      export CF_APP_NAME="$CF_APP-dev"
+      export CF_APP_NAME="dev-$CF_APP"
       cf push "${CF_APP_NAME}"
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
@@ -65,7 +65,7 @@ stages:
     script: |-
       #!/bin/bash
       # Push app
-      export CF_APP_NAME="$CF_APP-qa"
+      export CF_APP_NAME="test-$CF_APP"
       cf push "${CF_APP_NAME}"
       # View logs
       #cf logs "${CF_APP_NAME}" --recent

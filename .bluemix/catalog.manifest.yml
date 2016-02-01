@@ -3,7 +3,6 @@ applications:
 - services:
   - myMicroservicesCloudant
   name: catalog-api
-  memory: 256m
+  memory: 96m
   instances: 1
-  host: ms-catalogAPI-${random-word}
   path: .

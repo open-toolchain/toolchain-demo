@@ -63,7 +63,7 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
-      export CF_APP_NAME="$CF_APP-dev"
+      export CF_APP_NAME="dev-$CF_APP"
   - name: Pre Deploy
     type: deployer
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
@@ -89,16 +89,9 @@ stages:
     script: |
       #!/bin/bash
       cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
-      # Publish catalogAPI
-      if ! cf service catalogAPI > /dev/null; then
-      cf cups catalogAPI
-      fi
       # Push app
       cf push "${CF_APP_NAME}"
-      # Update catalogAPI
-      HOST=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
-      export APP_URL=$HOST
-      cf uups catalogAPI -p '{"host":"'$HOST'"}'
+      export APP_URL=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
   - name: Functional Test
@@ -146,7 +139,7 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
-      export CF_APP_NAME="$CF_APP-test"
+      export CF_APP_NAME="test-$CF_APP"
   - name: Pre Deploy
     type: deployer
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
@@ -172,15 +165,8 @@ stages:
     script: |
       #!/bin/bash
       cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
-      # Publish catalogAPI
-      if ! cf service catalogAPI > /dev/null; then
-      cf cups catalogAPI
-      fi
       # Push app
       cf push "${CF_APP_NAME}"
-      # Update catalogAPI
-      HOST=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
-      cf uups catalogAPI -p '{"host":"'$HOST'"}'
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
 - name: PROD
@@ -248,10 +234,6 @@ stages:
     script: |-
       #!/bin/bash
       cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
-      # Publish catalogAPI
-      if ! cf service catalogAPI > /dev/null; then
-      cf cups catalogAPI
-      fi
       cf push "${CF_APP_NAME}" --no-route -i 1
   - name: Begin AD
     type: deployer
@@ -268,9 +250,6 @@ stages:
       source ${EXT_DIR}/git_util.sh
       git_retry clone https://github.com/Osthanes/update_service.git activedeploy
       activedeploy/activedeploy_step_1.sh
-      # Update catalogAPI
-      HOST=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
-      cf uups catalogAPI -p '{"host":"'$HOST'"}'
   - name: Complete AD
     type: deployer
     extension_id: ibm.devops.services.pipeline.devops.ad_finish
