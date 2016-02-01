@@ -5,7 +5,7 @@ stages:
   - type: git
     branch: master
     url: ${GIT_REPO_URL}
-    token: ${GIT_REPO_TOKEN}	
+    token: ${GIT_REPO_TOKEN}
   triggers:
   - type: commit
   jobs:
@@ -69,6 +69,21 @@ stages:
       cf push "${CF_APP_NAME}"
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
+  - name: Sauce Labs Tests QA
+    type: tester
+    extension_id: ibm.devops.services.pipeline.saucelabs
+    target:
+      region_id: ${QA_REGION_ID}
+      organization: ${QA_ORG_NAME}
+      space: $QA_SPACE_NAME}
+    ACCESS: ${API_KEY}
+    DL_ASSETS: 'true'
+    SELECT_CMD: grunt
+    USER_ID: ${SAUCE_USER}
+    COMMAND: |-
+      #!/bin/bash
+    enable_tests: true
+    test_file_pattern: '*.xml'
 - name: PROD
   inputs:
   - type: job
