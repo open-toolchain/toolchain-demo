@@ -13,21 +13,21 @@ catalog-api-repo:
   capability: github
   parameters:
     repo_name: catalog-api
-    fork: hmagph/Microservices_CatalogAPI
+    fork: skaegi/Microservices_CatalogAPI
     has_issues: false
 
 orders-api-repo:
   capability: github
   parameters:
     repo_name: order-api
-    fork: hmagph/Microservices_OrdersAPI
+    fork: skaegi/Microservices_OrdersAPI
     has_issues: false
 
 ui-repo:
   capability: github
   parameters:
     repo_name: ui
-    fork: hmagph/Microservices_UI
+    fork: skaegi/Microservices_UI
     has_issues: true
 
 # Pipelines
