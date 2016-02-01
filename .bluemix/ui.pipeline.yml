@@ -143,13 +143,3 @@ stages:
       #!/bin/bash
     enable_tests: true
     test_file_pattern: '*.xml'
-      organization: ${DEV_ORG_NAME}
-      space: ${DEV_SPACE_NAME}
-      application: ${CF_APP_NAME}
-    script: |-
-      #!/bin/bash
-      # Push app
-      export CF_APP_NAME="$CF_APP-dev"
-      cf push "${CF_APP_NAME}"
-      # View logs
-      #cf logs "${CF_APP_NAME}" --recent
