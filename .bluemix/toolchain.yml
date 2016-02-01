@@ -114,6 +114,9 @@ deploy:
   schema: deploy.json
   capability-category: pipeline
   parameters:
+    orders-app-name: {{name}}-orders-api
+    catalog-app-name: {{name}}-catalog-api
+    ui-app-name: {{name}}-ui
     dev-space: dev
     qa-space: qa
     prod-space: prod
