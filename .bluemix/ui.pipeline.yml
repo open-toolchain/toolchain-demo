@@ -40,21 +40,6 @@ stages:
       cf push "${CF_APP_NAME}"
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
-  - name: Sauce Labs Tests Dev
-    type: tester
-    extension_id: ibm.devops.services.pipeline.saucelabs
-    target:
-      region_id: ${DEV_REGION_ID}
-      organization: ${DEV_ORG_NAME}
-      space: ${DEV_SPACE_NAME}
-    ACCESS: ${API_KEY}
-    DL_ASSETS: 'true'
-    SELECT_CMD: grunt
-    USER_ID: ${SAUCE_USER}
-    COMMAND: |-
-      #!/bin/bash
-    enable_tests: true
-    test_file_pattern: '*.xml'
 - name: QA
   inputs:
   - type: job
@@ -128,18 +113,3 @@ stages:
       cf push "${CF_APP_NAME}"
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
-  - name: Sauce Labs Tests Prod
-    type: tester
-    extension_id: ibm.devops.services.pipeline.saucelabs
-    target:
-      region_id: ${PROD_REGION_ID}
-      organization: ${PROD_ORG_NAME}
-      space: ${PROD_SPACE_NAME}
-    ACCESS: ${API_KEY}
-    DL_ASSETS: 'true'
-    SELECT_CMD: grunt
-    USER_ID: ${SAUCE_USER}
-    COMMAND: |-
-      #!/bin/bash
-    enable_tests: true
-    test_file_pattern: '*.xml'
