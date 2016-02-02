@@ -78,10 +78,11 @@ stages:
       space: $QA_SPACE_NAME}
     ACCESS: ${API_KEY}
     DL_ASSETS: 'true'
-    SELECT_CMD: grunt
+    SELECT_CMD: ' '
     USER_ID: ${SAUCE_USER}
     COMMAND: |-
       #!/bin/bash
+      grunt test_fake
     enable_tests: true
     test_file_pattern: '*.xml'
 - name: PROD
