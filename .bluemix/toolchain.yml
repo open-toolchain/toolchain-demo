@@ -58,7 +58,6 @@ catalog-api-build:
     metadata: catalog-api.pipeline.yml
     env:
       GIT_REPO_URL: ${catalog-api-repo.parameters.repo-url}
-      SAUCE_USER: ${test.parameters.username}
       CF_APP_NAME: ${deploy.parameters.catalog-app-name}
       DEV_SPACE_NAME: ${deploy.parameters.dev-space}
       DEV_ORG_NAME: ${deploy.parameters.dev-organization}
@@ -77,7 +76,6 @@ orders-api-build:
     metadata: order-api.pipeline.yml
     env:
       GIT_REPO_URL: ${orders-api-repo.parameters.repo-url}
-      SAUCE_USER: ${test.parameters.username}
       CF_APP_NAME: ${deploy.parameters.orders-app-name}
       DEV_SPACE_NAME: ${deploy.parameters.dev-space}
       DEV_ORG_NAME: ${deploy.parameters.dev-organization}
