@@ -75,7 +75,7 @@ stages:
     target:
       region_id: ${QA_REGION_ID}
       organization: ${QA_ORG_NAME}
-      space: $QA_SPACE_NAME}
+      space: ${QA_SPACE_NAME}
     ACCESS: ${API_KEY}
     DL_ASSETS: 'true'
     SELECT_CMD: grunt
