@@ -101,6 +101,11 @@ test:
   capability: saucelabs
   metadata: saucelabs.yml
 
+#Pager Duty
+alerting:
+  capability: pagerduty
+  metadata: pagerduty.yml
+  
 #Web IDE
 webide:
   capability: orion
