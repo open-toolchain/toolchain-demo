@@ -8,10 +8,6 @@ stages:
     token: ${GIT_REPO_TOKEN}
   triggers:
   - type: commit
-  properties:
-  - name: DRA_SERVER
-    value: https://dra.stage1.mybluemix.net
-    type: text
   jobs:
   - name: Build
     type: builder
@@ -33,7 +29,7 @@ stages:
     COMMAND: |
       #!/bin/bash
       npm install
-      grunt dev-test-cov -f
+      grunt dev-test-cov --no-color -f
     CHECK_COVERAGE_REGRESSION: 'true'
     TEST_TOOL_SELECT: mocha
 - name: DEV
@@ -49,9 +45,6 @@ stages:
     type: text
   - name: APP_URL
     value: undefined
-    type: text
-  - name: DRA_SERVER
-    value: https://dra.stage1.mybluemix.net
     type: text
   jobs:
   - name: Set App name
@@ -110,7 +103,7 @@ stages:
       #!/bin/bash
       export CATALOG_API_TEST_SERVER=$APP_URL
       npm install
-      grunt dev-fvt -f
+      grunt dev-fvt --no-color -f
     TEST_TOOL_SELECT: mocha
 - name: TEST
   inputs:
@@ -125,9 +118,6 @@ stages:
     type: text
   - name: APP_URL
     value: undefined
-    type: text
-  - name: DRA_SERVER
-    value: https://dra.stage1.mybluemix.net
     type: text
   jobs:
   - name: Set App name
@@ -194,9 +184,6 @@ stages:
     type: text
   - name: TEST_RESULT_FOR_AD
     value: ''
-    type: text
-  - name: DRA_SERVER
-    value: https://dra.stage1.mybluemix.net
     type: text
   jobs:
   - name: Set App name
