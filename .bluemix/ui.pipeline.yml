@@ -78,7 +78,7 @@ stages:
       space: $QA_SPACE_NAME}
     ACCESS: ${API_KEY}
     DL_ASSETS: 'true'
-    SELECT_CMD: ' '
+    SELECT_CMD: custom
     USER_ID: ${SAUCE_USER}
     COMMAND: |-
       #!/bin/bash
