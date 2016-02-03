@@ -82,9 +82,11 @@ stages:
     USER_ID: ${SAUCE_USER}
     COMMAND: |-
       #!/bin/bash
+      cd test_config/
+      npm install
       grunt test_fake
     enable_tests: true
-    test_file_pattern: '*.xml'
+    test_file_pattern: 'test_config/*.xml'
 - name: PROD
   inputs:
   - type: job
