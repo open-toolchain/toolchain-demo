@@ -82,7 +82,6 @@ stages:
     USER_ID: ${SAUCE_USER}
     COMMAND: |-
       #!/bin/bash
-      cd test_config/
       npm install
       grunt test_fake
     enable_tests: true
