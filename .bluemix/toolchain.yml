@@ -12,21 +12,21 @@ required:
 catalog-api-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "{{name}}-catalog-api"
+    repo_name: "catalog-api-{{name}}"
     fork: skaegi/Microservices_CatalogAPI
     has_issues: false
 
 orders-api-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "{{name}}-order-api"
+    repo_name: "order-api-{{name}}"
     fork: skaegi/Microservices_OrdersAPI
     has_issues: false
 
 ui-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "{{name}}-ui"
+    repo_name: "ui-{{name}}"
     fork: skaegi/Microservices_UI
     has_issues: true
 
