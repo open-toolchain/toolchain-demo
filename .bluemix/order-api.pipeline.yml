@@ -11,6 +11,11 @@ stages:
   jobs:
   - name: Build
     type: builder
+    artifact_dir: ''
+    build_type: ant
+    script: |-
+      #!/bin/bash
+      ant
 - name: DEV
   inputs:
   - type: job
