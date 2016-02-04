@@ -34,7 +34,7 @@ ui-repo:
 ui-build:
   service_id: pipeline
   parameters:
-    name: ui
+    name: "ui-{{name}}"
     metadata: ui.pipeline.yml
     env:
       GIT_REPO_URL: ${ui-repo.parameters.repo-url}
@@ -54,7 +54,7 @@ ui-build:
 catalog-api-build:
   service_id: pipeline
   parameters:
-    name: catalog-api
+    name: "catalog-api-{{name}}"
     metadata: catalog-api.pipeline.yml
     env:
       GIT_REPO_URL: ${catalog-api-repo.parameters.repo-url}
@@ -72,7 +72,7 @@ catalog-api-build:
 orders-api-build:
   service_id: pipeline
   parameters:
-    name: orders-api
+    name: "orders-api-{{name}}"
     metadata: order-api.pipeline.yml
     env:
       GIT_REPO_URL: ${orders-api-repo.parameters.repo-url}
