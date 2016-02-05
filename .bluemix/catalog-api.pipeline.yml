@@ -175,8 +175,8 @@ stages:
   - name: APP_URL
     value: undefined
     type: text
-  - name: ROUTE_DOMAIN
-    value: stage1.mybluemix.net
+  - name: AD_ENDPOINT
+    value: http://cap-sg-prd-1.integration.ibmcloud.com:15749
     type: text
   - name: GROUP_SIZE
     value: '3'
