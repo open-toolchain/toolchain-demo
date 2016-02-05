@@ -42,16 +42,9 @@ stages:
       #!/bin/bash
       cf create-service sqldb sqldb_free myMicroservicesSQL
       cf create-service mqlight standard mqLightService
-      # Publish ordersAPI
-      if ! cf service ordersAPI > /dev/null; then
-      cf cups ordersAPI
-      fi
       # Push app
       export CF_APP_NAME="dev-$CF_APP"
       cf push "${CF_APP_NAME}"
-      # Update ordersAPI
-      HOST=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
-      cf uups ordersAPI -p '{"host":"'$HOST'"}'
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
 - name: QA
@@ -80,16 +73,9 @@ stages:
       #!/bin/bash
       cf create-service sqldb sqldb_free myMicroservicesSQL
       cf create-service mqlight standard mqLightService
-      # Publish ordersAPI
-      if ! cf service ordersAPI > /dev/null; then
-      cf cups ordersAPI
-      fi
       # Push app
       export CF_APP_NAME="test-$CF_APP"
       cf push "${CF_APP_NAME}"
-      # Update ordersAPI
-      HOST=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
-      cf uups ordersAPI -p '{"host":"'$HOST'"}'
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
 - name: PROD
@@ -118,15 +104,8 @@ stages:
       #!/bin/bash
       cf create-service sqldb sqldb_free myMicroservicesSQL
       cf create-service mqlight standard mqLightService
-      # Publish ordersAPI
-      if ! cf service ordersAPI > /dev/null; then
-      cf cups ordersAPI
-      fi
       # Push app
       export CF_APP_NAME="$CF_APP"
       cf push "${CF_APP_NAME}"
-      # Update ordersAPI
-      HOST=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
-      cf uups ordersAPI -p '{"host":"'$HOST'"}'
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
