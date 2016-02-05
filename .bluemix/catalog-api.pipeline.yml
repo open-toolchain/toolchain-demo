@@ -68,6 +68,7 @@ stages:
     ENABLE_COMPARE_APPS: 'false'
     DRA_MODE: 'false'
     APPLICATION_NAME: ${CF_APP_NAME}
+    APP_DESTINATION_MANIFEST: manifest.yml
     APP_DESTINATION: Alpha
     ENABLE_BOUND_SERVICE: 'true'
     APP_NOTDESTINATION: Test
@@ -141,6 +142,7 @@ stages:
     ENABLE_COMPARE_APPS: 'true'
     DRA_MODE: 'false'
     APPLICATION_NAME: ${CF_APP_NAME}
+    APP_DESTINATION_MANIFEST: manifest.yml
     APP_DESTINATION: Test
     ENABLE_BOUND_SERVICE: 'true'
     APP_NOTDESTINATION: Alpha
@@ -204,9 +206,10 @@ stages:
       organization: ${PROD_ORG_NAME}
       space: ${PROD_SPACE_NAME}
       application: ${CF_APP_NAME}
-    ENABLE_COMPARE_APPS: 'false'
+    ENABLE_COMPARE_APPS: 'true'
     DRA_MODE: 'false'
     APPLICATION_NAME: ${CF_APP_NAME}
+    APP_DESTINATION_MANIFEST: manifest.yml
     APP_DESTINATION: Prod
     ENABLE_BOUND_SERVICE: 'false'
     APP_NOTDESTINATION: Test
