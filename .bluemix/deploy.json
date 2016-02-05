@@ -62,19 +62,19 @@
         "view": [
            {
               "type": "text",
-              "readonly": "true",
+              "readonly": true,
               "title": "Orders App Name",
               "key": "orders-app-name"
             },
             {
               "type": "text",
-              "readonly": "true",
+              "readonly": true,
               "title": "Catalog App Name",
               "key": "catalog-app-name"
             },
             {
               "type": "text",
-              "readonly": "true",
+              "readonly": true,
               "title": "UI App Name",
               "key": "ui-app-name"
             },
