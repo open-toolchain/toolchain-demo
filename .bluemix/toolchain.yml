@@ -19,7 +19,7 @@ catalog-api-repo:
 orders-api-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "order-api-{{name}}"
+    repo_name: "orders-api-{{name}}"
     type: skaegi/Microservices_OrdersAPI
     has_issues: false
 
