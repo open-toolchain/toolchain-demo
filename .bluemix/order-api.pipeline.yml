@@ -71,7 +71,6 @@ stages:
     script: |-
       #!/bin/bash
       cf create-service sqldb sqldb_free myMicroservicesSQL
-      cf create-service mqlight standard mqLightService
       # Push app
       export CF_APP_NAME="test-$CF_APP"
       cf push "${CF_APP_NAME}"
@@ -124,7 +123,6 @@ stages:
     script: |-
       #!/bin/bash
       cf create-service sqldb sqldb_free myMicroservicesSQL
-      cf create-service mqlight standard mqLightService
       # Push app
       export CF_APP_NAME="$CF_APP"
       cf push "${CF_APP_NAME}"
