@@ -1,9 +1,0 @@
----
-applications:
-- services:
-  - myMicroservicesSQL
-  - mqLightService
-  name: order-api
-  path: JavaOrdersAPI.war
-  instances: 1
-  memory: 128M

@@ -1,8 +1,0 @@
----
-applications:
-- services:
-  - myMicroservicesCloudant
-  name: catalog-api
-  memory: 96m
-  instances: 1
-  path: .

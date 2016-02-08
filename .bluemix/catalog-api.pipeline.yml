@@ -47,16 +47,6 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Set App name
-    type: deployer
-    target:
-      region_id: ${DEV_REGION_ID}
-      organization: ${DEV_ORG_NAME}
-      space: ${DEV_SPACE_NAME}
-      application: ${CF_APP_NAME}
-    script: |-
-      #!/bin/bash
-      export CF_APP_NAME="dev-$CF_APP"
   - name: Pre Deploy Check
     type: deployer
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
@@ -84,6 +74,7 @@ stages:
       #!/bin/bash
       cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
       # Push app
+      export CF_APP_NAME="dev-$CF_APP"
       cf push "${CF_APP_NAME}"
       export APP_URL=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
       # View logs
@@ -121,16 +112,6 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Set App name
-    type: deployer
-    target:
-      region_id: ${QA_REGION_ID}
-      organization: ${QA_ORG_NAME}
-      space: ${QA_SPACE_NAME}
-      application: ${CF_APP_NAME}
-    script: |-
-      #!/bin/bash
-      export CF_APP_NAME="test-$CF_APP"
   - name: Pre Deploy Check
     type: deployer
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
@@ -158,6 +139,7 @@ stages:
       #!/bin/bash
       cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
       # Push app
+      export CF_APP_NAME="test-$CF_APP"
       cf push "${CF_APP_NAME}"
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
@@ -201,7 +183,7 @@ stages:
     value: http://cap-sg-prd-1.integration.ibmcloud.com:15749
     type: text
   - name: GROUP_SIZE
-    value: '3'
+    value: '2'
     type: text
   - name: TARGET_PLATFORM
     value: CloudFoundry
@@ -210,16 +192,6 @@ stages:
     value: ''
     type: text
   jobs:
-  - name: Set App name
-    type: deployer
-    target:
-      region_id: ${PROD_REGION_ID}
-      organization: ${PROD_ORG_NAME}
-      space: ${PROD_SPACE_NAME}
-      application: ${CF_APP_NAME}
-    script: |-
-      #!/bin/bash
-      export CF_APP_NAME="${CF_APP}_${BUILD_NUMBER}"
   - name: Pre Deploy Check
     type: deployer
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
@@ -246,6 +218,7 @@ stages:
     script: |-
       #!/bin/bash
       cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
+      export CF_APP_NAME="${CF_APP}_${BUILD_NUMBER}"
       cf push "${CF_APP_NAME}" --no-route -i 1
   - name: Active Rollout
     type: deployer
