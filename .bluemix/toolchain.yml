@@ -13,21 +13,24 @@ catalog-api-repo:
   service_id: githubpublic
   parameters:
     repo_name: "catalog-api-{{name}}"
-    type: skaegi/Microservices_CatalogAPI
+    repo_url: https://github.com/skaegi/Microservices_CatalogAPI
+    type: clone
     has_issues: false
 
 orders-api-repo:
   service_id: githubpublic
   parameters:
     repo_name: "orders-api-{{name}}"
-    type: skaegi/Microservices_OrdersAPI
+    repo_url: https://github.com/skaegi/Microservices_OrdersAPI
+    type: clone
     has_issues: false
 
 ui-repo:
   service_id: githubpublic
   parameters:
     repo_name: "ui-{{name}}"
-    type: skaegi/Microservices_UI
+    repo_url: https://github.com/skaegi/Microservices_UI
+    type: clone
     has_issues: true
 
 # Pipelines
