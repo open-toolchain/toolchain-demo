@@ -12,24 +12,24 @@ required:
 catalog-api-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "catalog-api-{{name}}"
-    repo_url: https://github.com/skaegi/Microservices_CatalogAPI
+    repo_name: "{{github.parameters.catalog-api-repo_name}}"
+    repo_url: "{{github.parameters.catalog-api-repo_url}}"
     type: clone
     has_issues: false
 
 orders-api-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "orders-api-{{name}}"
-    repo_url: https://github.com/skaegi/Microservices_OrdersAPI
+    repo_name: "{{github.parameters.orders-api-repo_name}}"
+    repo_url: "{{github.parameters.orders-api-repo_url}}"
     type: clone
     has_issues: false
 
 ui-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "ui-{{name}}"
-    repo_url: https://github.com/skaegi/Microservices_UI
+    repo_name: "{{github.parameters.ui-repo_name}}"
+    repo_url: "{{github.parameters.ui-repo_url}}"
     type: clone
     has_issues: true
 
@@ -133,4 +133,15 @@ deploy:
     orders-app-name: "{{orders-api-repo.parameters.repo_name}}"
     catalog-app-name: "{{catalog-api-repo.parameters.repo_name}}"
     ui-app-name: "{{ui-repo.parameters.repo_name}}"
- 
+
+#Github
+github:
+  schema: github.json
+  service-category: githubpublic
+  parameters:
+    catalog-api-repo_name: "catalog-api-{{name}}"
+    catalog-api-repo_url: https://github.com/skaegi/Microservices_CatalogAPI
+    orders-api-repo_name: "orders-api-{{name}}"
+    orders-api-repo_url": https://github.com/skaegi/Microservices_OrdersAPI
+    ui-repo_name": "ui-{{name}}"
+    ui-repo_url": https://github.com/skaegi/Microservices_UI
