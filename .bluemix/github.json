@@ -48,30 +48,19 @@
                     },
                     {
                       "type": "text",
-                      "key": "catalog-api-repo_name"
-                    },
-                    {
-                      "type": "label",
-                      "title": "=>"
-                    },
-                    {
-                      "type": "text",
                       "key": "catalog-api-repo_url"
                     },
                     {
-                      "type": "text",
-                      "key": "orders-api-repo_name"
-                    },
-                    {
                       "type": "label",
                       "title": "=>"
+                    },
+                    {
+                      "type": "text",
+                      "key": "catalog-api-repo_name"
                     },
                     {
                       "type": "text",
                       "key": "orders-api-repo_url"
-                    },  {
-                      "type": "text",
-                      "key": "ui-repo_name"
                     },
                     {
                       "type": "label",
@@ -79,7 +68,18 @@
                     },
                     {
                       "type": "text",
+                      "key": "orders-api-repo_name"
+                    },  {
+                      "type": "text",
                       "key": "ui-repo_url"
+                    },
+                    {
+                      "type": "label",
+                      "title": "=>"
+                    },
+                    {
+                      "type": "text",
+                      "key": "ui-repo_name"
                     }
                 ]
             }
