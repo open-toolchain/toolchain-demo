@@ -236,7 +236,7 @@ stages:
     ENABLE_BOUND_SERVICE: 'false'
     APP_NOTDESTINATION: Test
     COMMAND: '#!/bin/bash'
-  - name:Passive Deploy
+  - name: Passive Deploy
     type: deployer
     target:
       region_id: ${PROD_REGION_ID}
