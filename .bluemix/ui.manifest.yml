@@ -1,6 +1,0 @@
----
-applications:
-- name: microservices-ui
-  memory: 64M
-  instances: 1
-  path: .
