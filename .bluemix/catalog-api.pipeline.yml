@@ -220,7 +220,7 @@ stages:
     script: |-
       #!/bin/bash
       export CF_APP_NAME="${CF_APP}_${BUILD_NUMBER}"
-  - name: Pre Deploy
+  - name: Pre Deploy Check
     type: deployer
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
     target:
@@ -236,7 +236,7 @@ stages:
     ENABLE_BOUND_SERVICE: 'false'
     APP_NOTDESTINATION: Test
     COMMAND: '#!/bin/bash'
-  - name: Deploy Single Instance
+  - name:Passive Deploy
     type: deployer
     target:
       region_id: ${PROD_REGION_ID}
@@ -247,7 +247,7 @@ stages:
       #!/bin/bash
       cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
       cf push "${CF_APP_NAME}" --no-route -i 1
-  - name: Begin AD
+  - name: Active Rollout
     type: deployer
     extension_id: ibm.devops.services.pipeline.devops.ad_start
     target:
@@ -262,7 +262,7 @@ stages:
       source ${EXT_DIR}/git_util.sh
       git_retry clone https://github.com/Osthanes/update_service.git activedeploy
       activedeploy/activedeploy_step_1.sh
-  - name: Complete AD
+  - name: Active Cleanup
     type: deployer
     extension_id: ibm.devops.services.pipeline.devops.ad_finish
     target:
