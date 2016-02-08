@@ -57,7 +57,7 @@ stages:
     script: |-
       #!/bin/bash
       export CF_APP_NAME="dev-$CF_APP"
-  - name: Pre Deploy
+  - name: Pre Deploy Check
     type: deployer
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
     target:
@@ -131,7 +131,7 @@ stages:
     script: |-
       #!/bin/bash
       export CF_APP_NAME="test-$CF_APP"
-  - name: Pre Deploy
+  - name: Pre Deploy Check
     type: deployer
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
     target:
