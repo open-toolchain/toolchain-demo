@@ -50,10 +50,6 @@ stages:
   - name: Pre Deploy Check
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
-    target:
-      region_id: ${DEV_REGION_ID}
-      organization: ${DEV_ORG_NAME}
-      space: ${DEV_SPACE_NAME}
     ENABLE_COMPARE_APPS: 'false'
     DRA_MODE: 'false'
     APP_DESTINATION_MANIFEST: manifest.yml
@@ -112,10 +108,6 @@ stages:
   - name: Pre Deploy Check
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
-    target:
-      region_id: ${QA_REGION_ID}
-      organization: ${QA_ORG_NAME}
-      space: ${QA_SPACE_NAME}
     ENABLE_COMPARE_APPS: 'true'
     DRA_MODE: 'false'
     APP_DESTINATION_MANIFEST: manifest.yml
@@ -189,10 +181,6 @@ stages:
   - name: Pre Deploy Check
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
-    target:
-      region_id: ${PROD_REGION_ID}
-      organization: ${PROD_ORG_NAME}
-      space: ${PROD_SPACE_NAME}
     ENABLE_COMPARE_APPS: 'true'
     DRA_MODE: 'false'
     APP_DESTINATION_MANIFEST: manifest.yml
