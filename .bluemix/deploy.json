@@ -81,6 +81,7 @@
             {
                 "type": "table",
                 "columnCount": 4,
+                "widths": ["15%", "28%", "28%", "28%"],
                 "items": [
                     {
                       "type": "label",

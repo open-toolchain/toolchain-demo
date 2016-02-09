@@ -33,6 +33,7 @@
             {
                 "type": "table",
                 "columnCount": 3,
+                "widths": ["47%", "6%", "47%"],
                 "items": [
                     {
                       "type": "label",
