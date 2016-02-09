@@ -49,7 +49,7 @@ stages:
   jobs:
   - name: Pre Deploy Check
     type: tester
-    extension_id: ibm.devops.services.pipeline.dra_deploy_extn
+    extension_id: ibm.devops.services.pipeline.dra_predeploygate_extn
     ENABLE_COMPARE_APPS: 'false'
     DRA_MODE: 'false'
     APP_DESTINATION_MANIFEST: manifest.yml
@@ -107,7 +107,7 @@ stages:
   jobs:
   - name: Pre Deploy Check
     type: tester
-    extension_id: ibm.devops.services.pipeline.dra_deploy_extn
+    extension_id: ibm.devops.services.pipeline.dra_predeploygate_extn
     ENABLE_COMPARE_APPS: 'true'
     DRA_MODE: 'false'
     APP_DESTINATION_MANIFEST: manifest.yml
@@ -180,7 +180,7 @@ stages:
   jobs:
   - name: Pre Deploy Check
     type: tester
-    extension_id: ibm.devops.services.pipeline.dra_deploy_extn
+    extension_id: ibm.devops.services.pipeline.dra_predeploygate_extn
     ENABLE_COMPARE_APPS: 'true'
     DRA_MODE: 'false'
     APP_DESTINATION_MANIFEST: manifest.yml
