@@ -11,7 +11,7 @@ stages:
   jobs:
   - name: Build
     type: builder
-  - name: Unit Test
+  - name: Unit Tests
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_mocha_test
     target:
@@ -50,7 +50,10 @@ stages:
   - name: Pre Deploy Check
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
-    target: null
+    target:
+      region_id: ${DEV_REGION_ID}
+      organization: ${DEV_ORG_NAME}
+      space: ${DEV_SPACE_NAME}
     ENABLE_COMPARE_APPS: 'false'
     DRA_MODE: 'false'
     APP_DESTINATION_MANIFEST: manifest.yml
@@ -73,11 +76,11 @@ stages:
       export APP_URL=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
-  - name: Functional Test
+  - name: Functional Tests
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_mocha_fvt
     target:
-      region_id: ${QA_REGION_ID}
+      region_id: ${DEV_REGION_ID}
       organization: ${DEV_ORG_NAME}
       space: ${DEV_SPACE_NAME}
       application: ${CF_APP_NAME}
@@ -109,7 +112,10 @@ stages:
   - name: Pre Deploy Check
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
-    target: null
+    target:
+      region_id: ${QA_REGION_ID}
+      organization: ${QA_ORG_NAME}
+      space: ${QA_SPACE_NAME}
     ENABLE_COMPARE_APPS: 'true'
     DRA_MODE: 'false'
     APP_DESTINATION_MANIFEST: manifest.yml
@@ -183,7 +189,10 @@ stages:
   - name: Pre Deploy Check
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
-    target: null
+    target:
+      region_id: ${PROD_REGION_ID}
+      organization: ${PROD_ORG_NAME}
+      space: ${PROD_SPACE_NAME}
     ENABLE_COMPARE_APPS: 'true'
     DRA_MODE: 'false'
     APP_DESTINATION_MANIFEST: manifest.yml
