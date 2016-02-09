@@ -16,6 +16,7 @@ catalog-api-repo:
     repo_url: "{{github.parameters.catalog-api-repo_url}}"
     type: clone
     has_issues: false
+  hidden: [form, description]
 
 orders-api-repo:
   service_id: githubpublic
@@ -24,6 +25,7 @@ orders-api-repo:
     repo_url: "{{github.parameters.orders-api-repo_url}}"
     type: clone
     has_issues: false
+  hidden: [form, description]
 
 ui-repo:
   service_id: githubpublic
@@ -32,6 +34,7 @@ ui-repo:
     repo_url: "{{github.parameters.ui-repo_url}}"
     type: clone
     has_issues: true
+  hidden: [form, description]
 
 # Pipelines
 ui-build:
@@ -54,6 +57,7 @@ ui-build:
       PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
       PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
       PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+    hidden: [form, description]  
 
 catalog-api-build:
   service_id: pipeline
@@ -74,6 +78,7 @@ catalog-api-build:
       PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
       PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
       PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+    hidden: [form, description]
 
 orders-api-build:
   service_id: pipeline
@@ -94,6 +99,7 @@ orders-api-build:
       PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
       PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
       PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+    hidden: [form, description]
 
 #Timeline Analytics
 events:
