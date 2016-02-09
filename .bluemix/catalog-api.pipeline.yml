@@ -11,7 +11,7 @@ stages:
   jobs:
   - name: Build
     type: builder
-  - name: Unit Test
+  - name: Unit Tests
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_mocha_test
     target:
@@ -48,19 +48,12 @@ stages:
     type: text
   jobs:
   - name: Pre Deploy Check
-    type: deployer
-    extension_id: ibm.devops.services.pipeline.dra_deploy_extn
-    target:
-      region_id: ${DEV_REGION_ID}
-      organization: ${DEV_ORG_NAME}
-      space: ${DEV_SPACE_NAME}
-      application: ${CF_APP_NAME}
+    type: tester
+    extension_id: ibm.devops.services.pipeline.dra_predeploygate_extn
     ENABLE_COMPARE_APPS: 'false'
     DRA_MODE: 'false'
-    APPLICATION_NAME: ${CF_APP_NAME}
     APP_DESTINATION_MANIFEST: manifest.yml
-    APP_DESTINATION: Alpha
-    ENABLE_BOUND_SERVICE: 'true'
+    APP_DESTINATION: Dev
     APP_NOTDESTINATION: Test
     COMMAND: '#!/bin/bash'
   - name: Deploy to Dev
@@ -79,11 +72,11 @@ stages:
       export APP_URL=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
-  - name: Functional Test
+  - name: Functional Tests
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_mocha_fvt
     target:
-      region_id: ${QA_REGION_ID}
+      region_id: ${DEV_REGION_ID}
       organization: ${DEV_ORG_NAME}
       space: ${DEV_SPACE_NAME}
       application: ${CF_APP_NAME}
@@ -113,20 +106,13 @@ stages:
     type: text
   jobs:
   - name: Pre Deploy Check
-    type: deployer
-    extension_id: ibm.devops.services.pipeline.dra_deploy_extn
-    target:
-      region_id: ${QA_REGION_ID}
-      organization: ${QA_ORG_NAME}
-      space: ${QA_SPACE_NAME}
-      application: ${CF_APP_NAME}
+    type: tester
+    extension_id: ibm.devops.services.pipeline.dra_predeploygate_extn
     ENABLE_COMPARE_APPS: 'true'
     DRA_MODE: 'false'
-    APPLICATION_NAME: ${CF_APP_NAME}
     APP_DESTINATION_MANIFEST: manifest.yml
     APP_DESTINATION: Test
-    ENABLE_BOUND_SERVICE: 'true'
-    APP_NOTDESTINATION: Alpha
+    APP_NOTDESTINATION: Dev
     COMMAND: '#!/bin/bash'
   - name: Deploy to Test
     type: deployer
@@ -193,19 +179,12 @@ stages:
     type: text
   jobs:
   - name: Pre Deploy Check
-    type: deployer
-    extension_id: ibm.devops.services.pipeline.dra_deploy_extn
-    target:
-      region_id: ${PROD_REGION_ID}
-      organization: ${PROD_ORG_NAME}
-      space: ${PROD_SPACE_NAME}
-      application: ${CF_APP_NAME}
+    type: tester
+    extension_id: ibm.devops.services.pipeline.dra_predeploygate_extn
     ENABLE_COMPARE_APPS: 'true'
     DRA_MODE: 'false'
-    APPLICATION_NAME: ${CF_APP_NAME}
     APP_DESTINATION_MANIFEST: manifest.yml
     APP_DESTINATION: Prod
-    ENABLE_BOUND_SERVICE: 'false'
     APP_NOTDESTINATION: Test
     COMMAND: '#!/bin/bash'
   - name: Passive Deploy
