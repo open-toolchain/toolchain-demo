@@ -106,7 +106,7 @@ stages:
     value: undefined
     type: text
   jobs:
-    - name: Pre Deploy Check
+  - name: Pre Deploy Check
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_deploy_extn
     target: null
