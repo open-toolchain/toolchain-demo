@@ -56,7 +56,7 @@ stages:
     APP_DESTINATION_MANIFEST: manifest.yml
     APP_DESTINATION: Dev
     APP_NOTDESTINATION: Test
-    COMMAND: '#!/bin/bash'  
+    COMMAND: '#!/bin/bash'
   - name: Deploy to Dev
     type: deployer
     target:
