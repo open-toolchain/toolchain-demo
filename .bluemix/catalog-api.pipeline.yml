@@ -14,10 +14,6 @@ stages:
   - name: Unit Tests
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_mocha_test
-    target:
-      region_id: ${DEV_REGION_ID}
-      organization: ${DEV_ORG_NAME}
-      space: ${DEV_SPACE_NAME}
     MINIMUM_SUCCESS_RATE: '100'
     TEST_LOG_FILE: tests/server/mochatest.json
     MINIMUM_COVERAGE_RATE: '50'
@@ -75,11 +71,6 @@ stages:
   - name: Functional Tests
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_mocha_fvt
-    target:
-      region_id: ${DEV_REGION_ID}
-      organization: ${DEV_ORG_NAME}
-      space: ${DEV_SPACE_NAME}
-      application: ${CF_APP_NAME}
     MINIMUM_SUCCESS_RATE: '100'
     TEST_LOG_FILE: tests/fvt/mochafvttest.json
     ADVISORY_MODE: 'false'
