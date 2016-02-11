@@ -133,9 +133,9 @@ deploy:
   schema: deploy.json
   service-category: pipeline
   parameters:
-    dev-region: "{{region}}"
-    qa-region: "{{region}}"
-    prod-region: "{{region}}"
+    dev-region: "ibm:yp:us-south"
+    qa-region: "ibm:yp:us-south"
+    prod-region: "ibm:yp:us-south"
     dev-organization: "{{organization}}"
     qa-organization: "{{organization}}"
     prod-organization: "{{organization}}"
