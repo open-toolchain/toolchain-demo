@@ -62,19 +62,19 @@
        },        
        {
           "type": "text",
-          "readonly": true,
+          "readonly": false,
           "title": "Orders App Name",
           "key": "orders-app-name"
         },
         {
           "type": "text",
-          "readonly": true,
+          "readonly": false,
           "title": "Catalog App Name",
           "key": "catalog-app-name"
         },
         {
           "type": "text",
-          "readonly": true,
+          "readonly": false,
           "title": "UI App Name",
           "key": "ui-app-name"
         },
