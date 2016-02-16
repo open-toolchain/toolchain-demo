@@ -80,7 +80,7 @@ stages:
       organization: ${QA_ORG_NAME}
       space: ${QA_SPACE_NAME}
     ACCESS: ${API_KEY}
-    DL_ASSETS: 'true'
+    DL_ASSETS: 'false'
     SELECT_CMD: custom
     USER_ID: ${SAUCE_USER}
     COMMAND: |-
