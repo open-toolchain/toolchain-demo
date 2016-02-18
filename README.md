@@ -7,7 +7,7 @@ Get started with this sample, which is an online store that consists of three mi
 
 ---
 Read more at:
-* Garage Method [Starting Page](https://www.ibm.com/devops/method/toolchains/microservices_toolchain)
+* [Garage Method starting page](https://www.ibm.com/devops/method/toolchains/microservices_toolchain)
 * [Connections Wiki](https://w3-connections.ibm.com/wikis/home?lang=en-us#!/wiki/W4e7425c664ea_4859_93fb_660b3ab8388b/page/February%20Scenarios%20%28InterConnect%20DEMO%29)
 
 
