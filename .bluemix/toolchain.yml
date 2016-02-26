@@ -110,12 +110,12 @@ messaging:
   service_id: slack
   metadata: slack.yml
 
-#Sauce Laps
+#Sauce Labs
 test:
   service_id: saucelabs
   metadata: saucelabs.yml
 
-#Pager Duty
+#PagerDuty
 alerting:
   service_id: pagerduty
   metadata: pagerduty.yml
