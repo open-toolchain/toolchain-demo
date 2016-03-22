@@ -36,7 +36,7 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
-      cf create-service sqldb sqldb_free myMicroservicesSQL
+      cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
       # Push app
       export CF_APP_NAME="dev-$CF_APP"
       cf push "${CF_APP_NAME}"
@@ -66,7 +66,7 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
-      cf create-service sqldb sqldb_free myMicroservicesSQL
+      cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
       # Push app
       export CF_APP_NAME="test-$CF_APP"
       cf push "${CF_APP_NAME}"
@@ -118,7 +118,7 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
-      cf create-service sqldb sqldb_free myMicroservicesSQL
+      cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
       # Push app
       export CF_APP_NAME="$CF_APP"
       cf push "${CF_APP_NAME}"
