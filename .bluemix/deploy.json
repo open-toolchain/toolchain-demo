@@ -58,7 +58,7 @@
     "form": [
        {
           "type": "validator",
-          "url": "https://devops.stage1.ng.bluemix.net/develop/setup/bm-helper/helper.html"
+          "url": "https://devops.stage1.ng.bluemix.net/devops/setup/bm-helper/helper.html"
        },        
        {
           "type": "text",
