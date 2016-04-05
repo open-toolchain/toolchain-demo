@@ -42,63 +42,69 @@ ui-build:
   parameters:
     name: "ui-{{name}}"
     ui-pipeline: true
-    metadata: ui.pipeline.yml
-    env:
-      GIT_REPO_URL: ${ui-repo.parameters.repo-url}
-      SAUCE_USER: "{{test.parameters.username}}"
-      API_KEY: "{{test.parameters.key}}"
-      CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
-      DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
-      DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
-      DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
-      QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
-      QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
-      QA_REGION_ID: "{{deploy.parameters.qa-region}}"
-      PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
-      PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
-      PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+    configuration:
+      content: $file(ui.pipeline.yml)
+      env:
+        SAUCE_LABS: "test"
+        UI_REPO: "ui-repo"
+        CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
+        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
+        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
+        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
+        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
+        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
+        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
+        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
+        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
+        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+      execute: true
+    services: ["ui-repo", "test"]
   hidden: [form, description]  
 
 catalog-api-build:
   service_id: pipeline
   parameters:
     name: "catalog-api-{{name}}"
-    metadata: catalog-api.pipeline.yml
-    env:
-      GIT_REPO_URL: ${catalog-api-repo.parameters.repo-url}
-      SAUCE_USER: "{{test.parameters.username}}"
-      API_KEY: "{{test.parameters.key}}"
-      CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
-      DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
-      DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
-      DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
-      QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
-      QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
-      QA_REGION_ID: "{{deploy.parameters.qa-region}}"
-      PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
-      PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
-      PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+    configuration:
+      content: $file(catalog-api.pipeline.yml)
+      env:
+        SAUCE_LABS: "test"
+        CATALOG_API_REPO: "catalog-api-repo"
+        CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
+        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
+        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
+        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
+        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
+        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
+        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
+        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
+        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
+        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+      execute: true
+    services: ["catalog-api-repo", "test"]
   hidden: [form, description]
 
 orders-api-build:
   service_id: pipeline
   parameters:
     name: "orders-api-{{name}}"
-    metadata: order-api.pipeline.yml
-    env:
-      GIT_REPO_URL: ${orders-api-repo.parameters.repo-url}
-      SAUCE_USER: "{{test.parameters.username}}"
-      API_KEY: "{{test.parameters.key}}"
-      CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
-      DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
-      DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
-      DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
-      QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
-      QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
-      QA_REGION_ID: "{{deploy.parameters.qa-region}}"
-      PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
-      PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
-      PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+    configuration:
+      content: $file(order-api.pipeline.yml)
+      env:
+        SAUCE_LABS: "test"
+        ORDER_API_REPO: "orders-api-repo"
+        CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
+        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
+        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
+        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
+        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
+        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
+        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
+        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
+        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
+        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+      execute: true
+    services: ["orders-api-repo", "test"]
   hidden: [form, description]
 
 #Timeline Analytics
@@ -108,17 +114,17 @@ events:
 #Slack
 messaging:
   service_id: slack
-  metadata: slack.yml
+  include: slack.yml
 
 #Sauce Labs
 test:
   service_id: saucelabs
-  metadata: saucelabs.yml
+  include: saucelabs.yml
 
-#PagerDuty
+#Pager Duty
 alerting:
   service_id: pagerduty
-  metadata: pagerduty.yml
+  include: pagerduty.yml
   
 #Web IDE
 webide:
@@ -152,8 +158,8 @@ github:
   service-category: githubpublic
   parameters:
     catalog-api-repo_name: "catalog-api-{{name}}"
-    catalog-api-repo_url: https://github.com/oneibmcloud/Microservices_CatalogAPI
+    catalog-api-repo_url: https://github.com/skaegi/Microservices_CatalogAPI
     orders-api-repo_name: "orders-api-{{name}}"
-    orders-api-repo_url: https://github.com/hmagph/Microservices_OrdersAPI
+    orders-api-repo_url: https://github.com/skaegi/Microservices_OrdersAPI
     ui-repo_name: "ui-{{name}}"
-    ui-repo_url: https://github.com/oneibmcloud/Microservices_UI
+    ui-repo_url: https://github.com/skaegi/Microservices_UI
