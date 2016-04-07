@@ -107,10 +107,6 @@ orders-api-build:
     services: ["orders-api-repo", "test"]
   hidden: [form, description]
 
-#Timeline Analytics
-events:
-  service_id: timeline
-
 #Slack
 messaging:
   service_id: slack
@@ -120,19 +116,10 @@ messaging:
 test:
   service_id: saucelabs
   include: saucelabs.yml
-
-#Pager Duty
-alerting:
-  service_id: pagerduty
-  include: pagerduty.yml
   
 #Web IDE
 webide:
   service_id: orion
-
-#Active Deploy
-greenblue:
-  service_id: activedeploy
   
 #Deployment
 deploy:
