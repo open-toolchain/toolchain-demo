@@ -118,7 +118,7 @@ stages:
       export CF_APP_NAME="$CF_APP"
       cf push "${CF_APP_NAME}"
       # Start the load
-      export APP_URL=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
-      curl "${APP_URL}/autoLoadTest.php?count=100&delay=0&action=start"
+      # export APP_URL=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')
+      # curl "${APP_URL}/autoLoadTest.php?count=100&delay=0&action=start"
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
