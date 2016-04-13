@@ -130,7 +130,7 @@ stages:
     script: |-
       #!/bin/bash
       cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
-      export CF_APP_NAME="${CF_APP}_${BUILD_NUMBER}"
-      cf push "${CF_APP_NAME}"
+      cf install-plugin blue-green-deploy -r CF-Community
+      cf blue-green-deploy "${CF_APP_NAME}"
        # View logs
       #cf logs "${CF_APP_NAME}" --recent
