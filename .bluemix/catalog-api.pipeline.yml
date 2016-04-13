@@ -12,21 +12,11 @@ stages:
     type: builder
   - name: Unit Tests
     type: tester
-    extension_id: ibm.devops.services.pipeline.dra_mocha_test
-    MINIMUM_SUCCESS_RATE: '100'
-    TEST_LOG_FILE: tests/server/mochatest.json
-    MINIMUM_COVERAGE_RATE: '50'
-    ADVISORY_MODE: 'false'
-    COVERAGE_TOOL_SELECT: istanbul
-    COVERAGE_REGRESSION_THRESHOLD: '2'
-    CHECK_TEST_REGRESSION: 'true'
-    COVERAGE_LOG_FILE: tests/server/coverage/reports/coverage-summary.json
-    COMMAND: |
+    script: |-
       #!/bin/bash
+      npm install -g npm@3.7.2 ### work around default npm 2.1.1 instability
       npm install
       grunt dev-test-cov --no-color -f
-    CHECK_COVERAGE_REGRESSION: 'true'
-    TEST_TOOL_SELECT: mocha
 - name: DEV
   inputs:
   - type: job
@@ -42,15 +32,6 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Pre Deploy Check
-    type: tester
-    extension_id: ibm.devops.services.pipeline.dra_predeploygate_extn
-    ENABLE_COMPARE_APPS: 'false'
-    DRA_MODE: 'false'
-    APP_DESTINATION_MANIFEST: manifest.yml
-    APP_DESTINATION: Dev
-    APP_NOTDESTINATION: Test
-    COMMAND: '#!/bin/bash'
   - name: Deploy to Dev
     type: deployer
     target:
@@ -69,17 +50,12 @@ stages:
       #cf logs "${CF_APP_NAME}" --recent
   - name: Functional Tests
     type: tester
-    extension_id: ibm.devops.services.pipeline.dra_mocha_fvt
-    MINIMUM_SUCCESS_RATE: '100'
-    TEST_LOG_FILE: tests/fvt/mochafvttest.json
-    ADVISORY_MODE: 'false'
-    CHECK_TEST_REGRESSION: 'true'
-    COMMAND: |-
+    script: |-
       #!/bin/bash
       export CATALOG_API_TEST_SERVER=$APP_URL
+      npm install -g npm@3.7.2 ### work around default npm 2.1.1 instability
       npm install
       grunt dev-fvt --no-color -f
-    TEST_TOOL_SELECT: mocha
 - name: TEST
   inputs:
   - type: job
@@ -95,15 +71,6 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Pre Deploy Check
-    type: tester
-    extension_id: ibm.devops.services.pipeline.dra_predeploygate_extn
-    ENABLE_COMPARE_APPS: 'true'
-    DRA_MODE: 'false'
-    APP_DESTINATION_MANIFEST: manifest.yml
-    APP_DESTINATION: Test
-    APP_NOTDESTINATION: Dev
-    COMMAND: '#!/bin/bash'
   - name: Deploy to Test
     type: deployer
     target:
@@ -152,32 +119,8 @@ stages:
   - name: CF_APP_NAME
     value: undefined
     type: text
-  - name: APP_URL
-    value: undefined
-    type: text
-  - name: AD_ENDPOINT
-    value: http://cap-sg-prd-1.integration.ibmcloud.com:15749
-    type: text
-  - name: GROUP_SIZE
-    value: '2'
-    type: text
-  - name: TARGET_PLATFORM
-    value: CloudFoundry
-    type: text
-  - name: TEST_RESULT_FOR_AD
-    value: ''
-    type: text
   jobs:
-  - name: Pre Deploy Check
-    type: tester
-    extension_id: ibm.devops.services.pipeline.dra_predeploygate_extn
-    ENABLE_COMPARE_APPS: 'true'
-    DRA_MODE: 'false'
-    APP_DESTINATION_MANIFEST: manifest.yml
-    APP_DESTINATION: Prod
-    APP_NOTDESTINATION: Test
-    COMMAND: '#!/bin/bash'
-  - name: Passive Deploy
+  - name: Temporary Deploy (to be replaced)
     type: deployer
     target:
       region_id: ${PROD_REGION_ID}
@@ -188,32 +131,6 @@ stages:
       #!/bin/bash
       cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
       export CF_APP_NAME="${CF_APP}_${BUILD_NUMBER}"
-      cf push "${CF_APP_NAME}" --no-route -i 1
-  - name: Active Rollout
-    type: deployer
-    extension_id: ibm.devops.services.pipeline.devops.ad_start
-    target:
-      region_id: ${PROD_REGION_ID}
-      organization: ${PROD_ORG_NAME}
-      space: ${PROD_SPACE_NAME}
-      application: ${CF_APP_NAME}
-    RAMPDOWN_DURATION: 1m
-    RAMPUP_DURATION: 2m
-    COMMAND: |-
-      #!/bin/bash
-      source ${EXT_DIR}/git_util.sh
-      git_retry clone https://github.com/Osthanes/update_service.git activedeploy
-      activedeploy/activedeploy_step_1.sh
-  - name: Active Cleanup
-    type: deployer
-    extension_id: ibm.devops.services.pipeline.devops.ad_finish
-    target:
-      region_id: ${PROD_REGION_ID}
-      organization: ${PROD_ORG_NAME}
-      space: ${PROD_SPACE_NAME}
-      application: ${CF_APP_NAME}
-    COMMAND: |-
-      #!/bin/bash
-      source ${EXT_DIR}/git_util.sh
-      git_retry clone https://github.com/Osthanes/update_service.git activedeploy
-      activedeploy/activedeploy_step_2.sh
+      cf push "${CF_APP_NAME}"
+       # View logs
+      #cf logs "${CF_APP_NAME}" --recent
