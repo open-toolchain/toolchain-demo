@@ -6,6 +6,7 @@ image: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAApEAAAHYCAIAAACa9iSlAAAACXB
 required:
  - deploy
  - github
+ - test
 
 # Github repos
 catalog-api-repo:
