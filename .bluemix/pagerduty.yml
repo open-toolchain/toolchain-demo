@@ -1,6 +1,6 @@
 ---
 parameters:
-  account_id: ""
+  site_name: ""
   api_key: ""
   service_name: ""
   user_email: ""
