@@ -129,6 +129,7 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
+      cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
       if ! cf app $CF_APP; then  
         cf push $CF_APP
       else
