@@ -120,7 +120,7 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Temporary Deploy (to be replaced)
+  - name: ZDD Deploy to Prod
     type: deployer
     target:
       region_id: ${PROD_REGION_ID}
