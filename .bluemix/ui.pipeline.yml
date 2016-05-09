@@ -25,7 +25,7 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Deploy to dev
+  - name: Deploy to Dev
     type: deployer
     target:
       region_id: ${DEV_REGION_ID}
@@ -39,7 +39,7 @@ stages:
       cf push "${CF_APP_NAME}"
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
-- name: QA
+- name: TEST
   inputs:
   - type: job
     stage: BUILD
@@ -54,7 +54,7 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Deploy to QA
+  - name: Deploy to Test
     type: deployer
     target:
       region_id: ${QA_REGION_ID}
@@ -105,7 +105,7 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Deploy to prod
+  - name: ZDD Deploy to Prod
     type: deployer
     target:
       region_id: ${PROD_REGION_ID}
