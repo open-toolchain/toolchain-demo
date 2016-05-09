@@ -26,7 +26,7 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Deploy to dev
+  - name: Deploy to Dev
     type: deployer
     target:
       region_id: ${DEV_REGION_ID}
@@ -108,7 +108,7 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Blue/Green Deploy to prod
+  - name: ZDD Deploy to Prod
     type: deployer
     target:
       region_id: ${PROD_REGION_ID}
