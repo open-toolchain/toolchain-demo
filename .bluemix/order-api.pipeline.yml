@@ -108,7 +108,7 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Deploy to prod
+  - name: Green/Blue Deploy to prod
     type: deployer
     target:
       region_id: ${PROD_REGION_ID}
