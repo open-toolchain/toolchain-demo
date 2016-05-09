@@ -41,7 +41,7 @@ stages:
       cf push "${CF_APP_NAME}"
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
-- name: QA
+- name: TEST
   inputs:
   - type: job
     stage: BUILD
@@ -56,7 +56,7 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Deploy to QA
+  - name: Deploy to Test
     type: deployer
     target:
       region_id: ${QA_REGION_ID}
