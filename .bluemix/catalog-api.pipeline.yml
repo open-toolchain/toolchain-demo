@@ -14,9 +14,14 @@ stages:
     type: tester
     script: |-
       #!/bin/bash
-      npm install -g npm@3.7.2 ### work around default npm 2.1.1 instability
-      npm install
-      grunt dev-test-cov --no-color -f
+      GRUNTFILE="tests/Gruntfile.js"
+      if [ -f $GRUNTFILE ]; then
+        npm install -g npm@3.7.2 ### work around default npm 2.1.1 instability
+        npm install
+        grunt dev-test-cov --no-color -f --gruntfile $GRUNTFILE --base .
+      else
+        echo "$GRUNTFILE not found."
+      fi      
 - name: DEV
   inputs:
   - type: job
@@ -53,9 +58,14 @@ stages:
     script: |-
       #!/bin/bash
       export CATALOG_API_TEST_SERVER=$APP_URL
-      npm install -g npm@3.7.2 ### work around default npm 2.1.1 instability
-      npm install
-      grunt dev-fvt --no-color -f
+      GRUNTFILE="tests/Gruntfile.js"
+      if [ -f $GRUNTFILE ]; then
+        npm install -g npm@3.7.2 ### work around default npm 2.1.1 instability
+        npm install
+        grunt dev-fvt --no-color -f --gruntfile $GRUNTFILE --base .
+      else
+        echo "$GRUNTFILE not found."
+      fi
 - name: TEST
   inputs:
   - type: job
