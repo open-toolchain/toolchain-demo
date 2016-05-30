@@ -84,12 +84,17 @@ stages:
     SELECT_CMD: custom
     COMMAND: |-
       #!/bin/bash
-      npm install
-      echo $APP_URL | grep "stage1"
-      if [ $? -eq 0 ]; then
-          grunt test_fake
+      GRUNTFILE="tests/Gruntfile.js"
+      if [ -f $GRUNTFILE ]; then
+        npm install
+        echo $APP_URL | grep "stage1"
+        if [ $? -eq 0 ]; then
+          grunt test_fake --gruntfile $GRUNTFILE --base .
+        else
+          grunt test_real --gruntfile $GRUNTFILE --base .
+        fi
       else
-          grunt test_real
+        echo "$GRUNTFILE not found."
       fi
     enable_tests: true
     test_file_pattern: '*.xml'
