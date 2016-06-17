@@ -9,7 +9,7 @@ required:
 
 # Github repos
 catalog-api-repo:
-  service_id: githubpublic
+  service_id: github
   parameters:
     repo_name: "{{github.parameters.catalog-api-repo_name}}"
     repo_url: "{{github.parameters.catalog-api-repo_url}}"
@@ -18,7 +18,7 @@ catalog-api-repo:
   hidden: [form, description]
 
 orders-api-repo:
-  service_id: githubpublic
+  service_id: github
   parameters:
     repo_name: "{{github.parameters.orders-api-repo_name}}"
     repo_url: "{{github.parameters.orders-api-repo_url}}"
@@ -27,7 +27,7 @@ orders-api-repo:
   hidden: [form, description]
 
 ui-repo:
-  service_id: githubpublic
+  service_id: github
   parameters:
     repo_name: "{{github.parameters.ui-repo_name}}"
     repo_url: "{{github.parameters.ui-repo_url}}"
@@ -44,7 +44,6 @@ ui-build:
     configuration:
       content: $file(ui.pipeline.yml)
       env:
-        SAUCE_LABS: "test"
         UI_REPO: "ui-repo"
         CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
         DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
@@ -67,7 +66,6 @@ catalog-api-build:
     configuration:
       content: $file(catalog-api.pipeline.yml)
       env:
-        SAUCE_LABS: "test"
         CATALOG_API_REPO: "catalog-api-repo"
         CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
         DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
@@ -90,7 +88,6 @@ orders-api-build:
     configuration:
       content: $file(order-api.pipeline.yml)
       env:
-        SAUCE_LABS: "test"
         ORDER_API_REPO: "orders-api-repo"
         CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
         DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
@@ -105,25 +102,6 @@ orders-api-build:
       execute: true
     services: ["orders-api-repo", "test"]
   hidden: [form, description]
-
-#Slack
-messaging:
-  service_id: slack
-  include: slack.yml
-
-#Sauce Labs
-test:
-  service_id: saucelabs
-  include: saucelabs.yml
-
-#PagerDuty
-alerting:
-  service_id: pagerduty
-  include: pagerduty.yml
-  
-#Web IDE
-webide:
-  service_id: orion
   
 #Deployment
 deploy:
