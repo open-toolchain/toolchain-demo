@@ -56,7 +56,7 @@ ui-build:
         PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
         PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
       execute: true
-    services: ["ui-repo", "test"]
+    services: ["ui-repo"]
   hidden: [form, description]  
 
 catalog-api-build:
@@ -78,7 +78,7 @@ catalog-api-build:
         PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
         PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
       execute: true
-    services: ["catalog-api-repo", "test"]
+    services: ["catalog-api-repo"]
   hidden: [form, description]
 
 orders-api-build:
@@ -100,7 +100,7 @@ orders-api-build:
         PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
         PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
       execute: true
-    services: ["orders-api-repo", "test"]
+    services: ["orders-api-repo"]
   hidden: [form, description]
   
 #Deployment
