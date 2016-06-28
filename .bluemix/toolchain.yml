@@ -121,10 +121,6 @@ deploy:
     catalog-app-name: "{{catalog-api-repo.parameters.repo_name}}"
     ui-app-name: "{{ui-repo.parameters.repo_name}}"
 
-#Web IDE
-webide:
-  service_id: orion
-
 #Github
 github:
   schema: github.json
