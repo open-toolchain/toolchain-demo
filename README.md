@@ -8,6 +8,7 @@ Get started with this sample, which is an online store that consists of three mi
 ---
 ###Learn more
 
+* For more information about IBM Bluemix toolchains, please read this article on [Custom toolchains in one click with IBM Bluemix DevOps Services](https://developer.ibm.com/devops-services/2016/06/16/open-toolchain-with-ibm-bluemix-devops-services/)
 * [Cloud-native toolchain for microservices](https://www.ibm.com/devops/method/toolchains/microservices_toolchain) on the IBM Bluemix Garage Method site
 
 
