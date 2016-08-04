@@ -1,6 +1,9 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "MicroServices Deploy Stage",
+    "localized-struct":{
+        "$ref": "deploy-localized-struct.json"
+    },
     "description": "Feb Demo Microservices Stage Schema",
     "longDescription": "The Delivery Pipeline for Devops Services allows you to automate your continuous deployment setup.",
     "type": "object",
