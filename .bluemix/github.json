@@ -1,6 +1,9 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "MicroServices Deploy Stage",
+    "localized-struct":{
+        "$ref": "github-localized-struct.json"
+    },
     "description": "Feb Demo Microservices GitHub Schema",
     "longDescription": "The GitHub Service allows you to create or use an existing GitHub repository to store your source code.",
     "type": "object",

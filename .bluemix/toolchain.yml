@@ -1,4 +1,7 @@
 ---
+default_locale: en
+locales: 
+  $ref: locales.yml
 name: "Microservices toolchain"
 description: "With this cloud-native toolchain, you use a sample to create an online store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing, and messaging.\n\nTo get started, click **Create**."
 version: 0.2
@@ -127,7 +130,8 @@ webide:
   
 #Deployment
 deploy:
-  schema: deploy.json
+  schema:
+    $ref: deploy.json
   service-category: pipeline
   parameters:
     dev-region: "{{region}}"
@@ -145,7 +149,8 @@ deploy:
 
 #Github
 github:
-  schema: github.json
+  schema:
+    $ref: github.json
   service-category: githubpublic
   parameters:
     catalog-api-repo_name: "catalog-api-{{name}}"
