@@ -1,8 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "MicroServices Deploy Stage",
+    "title": "Microservices deployment stage",
     "description": "Feb Demo Microservices Stage Schema",
-    "longDescription": "The Delivery Pipeline for Devops Services allows you to automate your continuous deployment setup.",
+    "longDescription": "The Delivery Pipeline automates continuous deployment.",
     "type": "object",
     "properties": {
         "dev-region": {
@@ -42,15 +42,15 @@
             "type": "string"
         },
         "orders-app-name": {
-            "description": "orders app name",
+            "description": "The name of the app for the Orders API",
             "type": "string"
         },
        "catalog-app-name": {
-            "description": "catalog app name",
+            "description": "The name of the app for the Catalog API",
             "type": "string"
         },
        "ui-app-name": {
-            "description": "ui app name",
+            "description": "The name of the app for the UI that calls the Orders and Catalog APIs",
             "type": "string"
         }
     },
@@ -63,19 +63,19 @@
        {
           "type": "text",
           "readonly": false,
-          "title": "Orders App Name",
+          "title": "Orders app name",
           "key": "orders-app-name"
         },
         {
           "type": "text",
           "readonly": false,
-          "title": "Catalog App Name",
+          "title": "Catalog app name",
           "key": "catalog-app-name"
         },
         {
           "type": "text",
           "readonly": false,
-          "title": "UI App Name",
+          "title": "UI app name",
           "key": "ui-app-name"
         },
         {
@@ -101,7 +101,7 @@
                 },
                 {
                   "type": "label",
-                  "title": "Dev Stage"
+                  "title": "Development stage"
                 },
                 {
                   "type": "select",
@@ -118,7 +118,7 @@
                 },
                 {
                   "type": "label",
-                  "title": "Test Stage"
+                  "title": "Test stage"
                 },
                 {
                   "type": "select",
@@ -135,7 +135,7 @@
                 },
                 {
                   "type": "label",
-                  "title": "Prod Stage"
+                  "title": "Production stage"
                 },
                 {
                   "type": "select",
