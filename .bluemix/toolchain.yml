@@ -133,7 +133,7 @@ webide:
 github:
   schema:
     $ref: github.json
-  service-category: github
+  service-category: github_integrated
   parameters:
     catalog-api-repo_name: "catalog-api-{{name}}"
     catalog-api-repo_url: https://github.com/open-toolchain/Microservices_CatalogAPI
