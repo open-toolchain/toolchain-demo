@@ -12,7 +12,7 @@ required:
 
 # Github repos
 catalog-api-repo:
-  service_id: github
+  service_id: github_integrated
   parameters:
     repo_name: "{{github.parameters.catalog-api-repo_name}}"
     repo_url: "{{github.parameters.catalog-api-repo_url}}"
@@ -21,7 +21,7 @@ catalog-api-repo:
   hidden: [form, description]
 
 orders-api-repo:
-  service_id: github
+  service_id: github_integrated
   parameters:
     repo_name: "{{github.parameters.orders-api-repo_name}}"
     repo_url: "{{github.parameters.orders-api-repo_url}}"
@@ -30,7 +30,7 @@ orders-api-repo:
   hidden: [form, description]
 
 ui-repo:
-  service_id: github
+  service_id: github_integrated
   parameters:
     repo_name: "{{github.parameters.ui-repo_name}}"
     repo_url: "{{github.parameters.ui-repo_url}}"
