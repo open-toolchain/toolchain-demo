@@ -21,4 +21,3 @@ $github.description: "Schéma GitHub de microservices - Démo de février"
 $github.longDescription: "GitHub permet de stocker le code source dans un référentiel GitHub nouveau ou existant."
 $github.sourceRepository: "Référentiel source"
 $github.targetRepository: "Référentiel cible"
- 

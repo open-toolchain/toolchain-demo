@@ -21,4 +21,3 @@ $github.description: "Esquema GitHub de Microsserviços Feb Demo"
 $github.longDescription: "Com o GitHub, é possível armazenar seu código-fonte em um repositório GitHub novo ou existente."
 $github.sourceRepository: "Repositório de Origem"
 $github.targetRepository: "Repositório de Destino"
- 
