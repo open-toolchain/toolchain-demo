@@ -21,4 +21,3 @@ $github.description: "Schema GitHub microservizi demo feb"
 $github.longDescription: "Con GitHub, è possibile memorizzare il codice sorgente in un repository GitHub nuovo o esistente."
 $github.sourceRepository: "Repository di origine"
 $github.targetRepository: "Repository di destinazione"
- 
