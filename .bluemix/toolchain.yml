@@ -134,12 +134,6 @@ deploy:
     $ref: deploy.json
   service-category: pipeline
   parameters:
-    dev-region: "{{region}}"
-    qa-region: "{{region}}"
-    prod-region: "{{region}}"
-    dev-organization: "{{organization}}"
-    qa-organization: "{{organization}}"
-    prod-organization: "{{organization}}"
     dev-space: dev
     qa-space: qa
     prod-space: prod
