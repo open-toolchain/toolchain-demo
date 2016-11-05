@@ -7,6 +7,16 @@ stages:
     service: ${UI_REPO}
   triggers:
   - type: commit
+  properties:
+  - name: LOGICAL_APP_NAME
+    value: ${CF_APP_NAME}
+    type: text
+  - name: BUILD_PREFIX
+    value: master
+    type: text
+  - name: LOGICAL_ENV_NAME
+    value: master
+    type: text
   jobs:
   - name: Build
     type: builder
@@ -23,6 +33,15 @@ stages:
     type: text
   - name: APP_URL
     value: undefined
+    type: text
+  - name: LOGICAL_ENV_NAME
+    value: ${DEV_SPACE_NAME}
+    type: text
+  - name: LOGICAL_APP_NAME
+    value: ${CF_APP_NAME}
+    type: text
+  - name: BUILD_PREFIX
+    value: master
     type: text
   jobs:
   - name: Deploy
@@ -52,6 +71,27 @@ stages:
     type: text
   - name: APP_URL
     value: undefined
+    type: text
+  - name: SAUCE_USERNAME
+    value: {{test.parameters.username}}
+    type: text
+  - name: SAUCE_ACCESS_KEY
+    value: {{test.parameters.key}}
+    type: text
+  - name: HOST
+    value: ondemand.saucelabs.com
+    type: text
+  - name: PORT
+    value: '80'
+    type: text
+  - name: LOGICAL_APP_NAME
+    value: ${CF_APP_NAME}
+    type: text
+  - name: BUILD_PREFIX
+    value: master
+    type: text
+  - name: LOGICAL_ENV_NAME
+    value: ${QA_SPACE_NAME}
     type: text
   jobs:
   - name: Deploy
@@ -92,9 +132,31 @@ stages:
         fi
       else
         echo "$GRUNTFILE not found."
-      fi 
+      fi
     enable_tests: true
     test_file_pattern: '*.xml'
+  - name: Functional Tests
+    type: tester
+    extension_id: ibm.devops.services.pipeline.dra_upload_results
+    APPLICATION_NAME: ${CF_APP_NAME}
+    LIFE_CYCLE_STAGE_SELECT: fvt
+    ADDITIONAL_LIFE_CYCLE_STAGE_SELECT: none
+    LOG_FILE: ./xunit.xml
+    COMMAND: |-
+      #!/bin/bash
+      GRUNTFILE="tests/Gruntfile.js"
+      if [ -f $GRUNTFILE ]; then
+        npm install
+        echo $APP_URL | grep "stage1"
+        if [ $? -eq 0 ]; then
+          grunt test_fake -f --gruntfile $GRUNTFILE --base .
+        else
+          grunt test_real -f --gruntfile $GRUNTFILE --base .
+        fi
+      else
+        echo "$GRUNTFILE not found."
+      fi
+    ENVIRONMENT: ${QA_SPACE_NAME}
 - name: PROD
   inputs:
   - type: job
@@ -109,6 +171,15 @@ stages:
   - name: APP_URL
     value: undefined
     type: text
+  - name: BUILD_PREFIX
+    value: master
+    type: text
+  - name: LOGICAL_APP_NAME
+    value: ${CF_APP_NAME}
+    type: text
+  - name: LOGICAL_ENV_NAME
+    value: ${PROD_SPACE_NAME}
+    type: text
   jobs:
   - name: Blue/Green Deploy
     type: deployer
@@ -119,12 +190,12 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
-      if ! cf app $CF_APP; then  
+      if ! cf app $CF_APP; then
         cf push $CF_APP
       else
         OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
         rollback() {
-          set +e  
+          set +e
           if cf app $OLD_CF_APP; then
             cf logs $CF_APP --recent
             cf delete $CF_APP -f
