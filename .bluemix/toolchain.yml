@@ -5,7 +5,7 @@ locales:
 name: "Microservices toolchain"
 description: "With this cloud-native toolchain, you use a sample to create an online store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing, and messaging.\n\nTo get started, click **Create**."
 version: 0.2
-image: data:image/png;base64,$file(toolchain.png,base64)
+image: data:image/svg+xml;base64,$file(toolchain.svg,base64)
 required:
  - deploy
  - github
