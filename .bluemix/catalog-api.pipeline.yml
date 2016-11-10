@@ -100,7 +100,7 @@ stages:
       if [ -f $GRUNTFILE ]; then
         npm install -g npm@3.7.2 ### work around default npm 2.1.1 instability
         npm install
-        grunt dev-fvt --no-color -f --gruntfile $GRUNTFILE --base .
+        grunt dev-fvt --no-color --gruntfile $GRUNTFILE --base .
       else
         echo "$GRUNTFILE not found."
       fi
@@ -196,9 +196,9 @@ stages:
         npm install
         echo $APP_URL | grep "stage1"
         if [ $? -eq 0 ]; then
-          grunt test_fake -f --gruntfile $GRUNTFILE --base .
+          grunt test_fake --gruntfile $GRUNTFILE --base .
         else
-          grunt test_real -f --gruntfile $GRUNTFILE --base .
+          grunt test_real --gruntfile $GRUNTFILE --base .
         fi
       else
         echo "$GRUNTFILE not found."
