@@ -10,7 +10,6 @@ icon: data:image/svg+xml;base64,$file(icon.svg,base64)
 required:
  - deploy
  - github
- - test
 
 # Github repos
 catalog-api-repo:
