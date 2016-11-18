@@ -1,6 +1,6 @@
 ---
 name: "1:Microservices toolchain"
-description: "2:With this cloud-native toolchain, you use a sample to create an online store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing, and messaging.\n\nTo get started, click **Create**."
+description: "2:With this cloud-native toolchain, you use a sample to create an online store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing, and alert notification.\n\nTo get started, click **Create**."
 $deploy.title: "3:Microservices deployment stage"
 $deploy.description: "4:Feb Demo Microservices Stage Schema"
 $deploy.longDescription: "5:The Delivery Pipeline automates continuous deployment."
