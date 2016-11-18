@@ -1,6 +1,6 @@
 ---
 name: "Microservices ツールチェーン"
-description: "このクラウド・ネイティブのツールチェーンでは、3 つのマイクロサービス (Catalog API、Orders API、およびそれら両方の API を呼び出す UI) から成る、オンライン・ストアを作成するためのサンプルを使用します。このツールチェーンは、継続的デリバリー、ソース管理、blue-green デプロイメント、機能テスト、問題のトラッキング、オンライン編集、およびメッセージング用に事前構成されています。\n\n開始するには、「作成」をクリックします。"
+description: "このクラウド・ネイティブのツールチェーンでは、3 つのマイクロサービス (Catalog API、Orders API、およびそれら両方の API を呼び出す UI) から成る、オンライン・ストアを作成するためのサンプルを使用します。このツールチェーンは、継続的デリバリー、ソース管理、blue-green デプロイメント、機能テスト、問題のトラッキング、オンライン編集、およびアラート通知用に事前構成されています。\n\n開始するには、「作成」をクリックします。"
 $deploy.title: "Microservices のデプロイメント・ステージ"
 $deploy.description: "Feb Demo Microservices のステージのスキーマ"
 $deploy.longDescription: "Delivery Pipeline は、継続的デプロイメントを自動化します。"
