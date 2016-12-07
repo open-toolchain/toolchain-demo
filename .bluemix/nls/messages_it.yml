@@ -1,6 +1,6 @@
 ---
 name: "Toolchain microservizi"
-description: "Utilizzando questa toolchain nativa per il cloud, viene utilizzato un campione per creare un archivio online composto da tre microservizi: un'API Catalogo, un'API Ordini ed una UI che richiama entrambe le API. La toolchain è preconfigurata per la distribuzione continua, il controllo origine, la blue-green deployment, il test funzionale, la traccia dei problemi, la modifica online e la notifica degli avvisi. \n\nPer iniziare, fare clic su **Crea**."
+description: "Utilizzando questa toolchain nativa per il cloud, viene utilizzato un campione per creare un archivio online composto da tre microservizi: un'API Catalogo, un'API Ordini ed una UI che richiama entrambe le API. La toolchain è preconfigurata per la distribuzione continua, il controllo origine, la blue-green deployment, il test funzionale, la traccia dei problemi, la modifica online e la notifica degli avvisi.\n\nPer iniziare, fare clic su **Crea**."
 $deploy.title: "Stage di sviluppo dei microservizi"
 $deploy.description: "Schema stage microservizi demo feb"
 $deploy.longDescription: "Delivery Pipeline automatizza la distribuzione continua."

@@ -1,6 +1,6 @@
 ---
 name: "Chaîne d'outils de microservices"
-description: "Cette chaîne d'outils native pour le cloud permet de construire un magasin en ligne comprenant trois microservices : une API Catalog, une API Orders et une interface graphique qui appelle les deux API. cette chaîne d'outils est préconfigurée pour la distribution continue, le contrôle des sources, le déploiement Blue-Green, les tests fonctionnels, le suivi des problèmes, l'édition en ligne et la notification d'alerte. \n\nPour commencer, cliquez sur **Créer**."
+description: "Cette chaîne d'outils native pour le cloud permet de construire un magasin en ligne comprenant trois microservices : une API Catalog, une API Orders et une interface graphique qui appelle les deux API. cette chaîne d'outils est préconfigurée pour la distribution continue, le contrôle des sources, le déploiement Blue-Green, les tests fonctionnels, le suivi des problèmes, l'édition en ligne et la notification d'alerte.\n\nPour commencer, cliquez sur **Créer**."
 $deploy.title: "Etape de déploiement de microservices"
 $deploy.description: "Schéma de la constitution de microservices - Démo de février"
 $deploy.longDescription: "Delivery Pipeline automatise le déploiement en continu."
