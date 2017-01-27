@@ -732,32 +732,32 @@
 		<line id="svg_575" class="st0" x1="155.8" y1="306.7" x2="155.7" y2="306.7"/>
 		<line id="svg_576" class="st0" x1="157.7" y1="306.5" x2="157.7" y2="306.5"/>
 	</g>
-	<text id="svg_577" transform="matrix(1 0 0 1 -0.65 18.15)" class="st46 st47">THINK</text>
-	<text id="svg_578" transform="matrix(1 0 0 1 88.35 18.15)" class="st46 st47">CODE</text>
-	<text id="svg_579" transform="matrix(1 0 0 1 214.35 18.15)" class="st46 st47">DELIVER</text>
-	<text id="svg_580" transform="matrix(1 0 0 1 380.35 18.15)" class="st46 st47">RUN</text>
-	<text id="svg_581" transform="matrix(1 0 0 1 463.35 18.15)" class="st46 st47">LEARN</text>
-	<text id="svg_582" transform="matrix(1 0 0 1 541.35 18.15)" class="st46 st47">MANAGE</text>
-	<text id="svg_583" transform="matrix(1 0 0 1 618.35 18.15)" class="st46 st47">CULTURE</text>
-	<text id="svg_584" transform="matrix(1 0 0 1 1.35 129.15)" class="st46 st47">ISSUE TRACKER</text>
-	<text id="svg_585" transform="matrix(1 0 0 1 25.35 141.15)" class="st46 st47">GitHub</text>
-	<text id="svg_586" transform="matrix(1 0 0 1 119.35 129.15)" class="st46 st47">REPOSITORY</text>
-	<text id="svg_587" transform="matrix(1 0 0 1 136.35 140.15)" class="st46 st47">GitHub</text>
-	<text id="svg_588" transform="matrix(1 0 0 1 215.35 129.15)" class="st46 st47">PIPELINE</text>
-	<text id="svg_589" transform="matrix(1 0 0 1 215.35 229.15)" class="st46 st47">PIPELINE</text>
-	<text id="svg_590" transform="matrix(1 0 0 1 216.35 331.15)" class="st46 st47">PIPELINE</text>
-	<text id="svg_591" transform="matrix(1 0 0 1 288.35 129.15)" class="st46 st47">SAUCE LABS</text>
-	<text id="svg_592" transform="matrix(1 0 0 1 288.35 229.15)" class="st46 st47">SAUCE LABS</text>
-	<text id="svg_593" transform="matrix(1 0 0 1 288.35 331.15)" class="st46 st47">SAUCE LABS</text>
-	<text id="svg_594" transform="matrix(1 0 0 1 381.35 229.15)" class="st46 st47">BLUEMIX</text>
-	<text id="svg_595" transform="matrix(1 0 0 1 119.35 229.15)" class="st46 st47">REPOSITORY</text>
-	<text id="svg_596" transform="matrix(1 0 0 1 136.35 241.15)" class="st46 st47">GitHub</text>
-	<text id="svg_597" transform="matrix(1 0 0 1 136.35 342.15)" class="st46 st47">GitHub</text>
-	<text id="svg_598" transform="matrix(1 0 0 1 119.35 331.15)" class="st46 st47">REPOSITORY</text>
-	<text id="svg_599" transform="matrix(1 0 0 1 127.35 434.15)" class="st46 st47">WEB IDE</text>
-	<text id="svg_600" transform="matrix(1.0228 0 0 1 639.9434 128.1499)" class="st46 st47">SLACK</text>
-	<text id="svg_601" transform="matrix(1.0228 0 0 1 541.5674 128.1499)" class="st46 st47">PAGER DUTY</text>
-	<text id="svg_602" transform="matrix(1 0 0 1 463.35 129.15)" class="st46 st47">DEVOPS</text>
-	<text id="svg_603" transform="matrix(1 0 0 1 460.35 141.15)" class="st46 st47">INSIGHTS</text>
+	<text id="think" transform="matrix(1 0 0 1 -0.65 18.15)" class="st46 st47">THINK</text>
+	<text id="code" transform="matrix(1 0 0 1 88.35 18.15)" class="st46 st47">CODE</text>
+	<text id="deliver" transform="matrix(1 0 0 1 214.35 18.15)" class="st46 st47">DELIVER</text>
+	<text id="run" transform="matrix(1 0 0 1 380.35 18.15)" class="st46 st47">RUN</text>
+	<text id="learn" transform="matrix(1 0 0 1 463.35 18.15)" class="st46 st47">LEARN</text>
+	<text id="manage" transform="matrix(1 0 0 1 541.35 18.15)" class="st46 st47">MANAGE</text>
+	<text id="culture" transform="matrix(1 0 0 1 618.35 18.15)" class="st46 st47">CULTURE</text>
+	<text id="issueTracker" transform="matrix(1 0 0 1 1.35 129.15)" class="st46 st47">ISSUE TRACKER</text>
+	<text id="gitHub1" transform="matrix(1 0 0 1 25.35 141.15)" class="st46 st47">GitHub</text>
+	<text id="repository1" transform="matrix(1 0 0 1 119.35 129.15)" class="st46 st47">REPOSITORY</text>
+	<text id="gitHub2" transform="matrix(1 0 0 1 136.35 140.15)" class="st46 st47">GitHub</text>
+	<text id="pipeline1" transform="matrix(1 0 0 1 215.35 129.15)" class="st46 st47">PIPELINE</text>
+	<text id="pipeline2" transform="matrix(1 0 0 1 215.35 229.15)" class="st46 st47">PIPELINE</text>
+	<text id="pipeline3" transform="matrix(1 0 0 1 216.35 331.15)" class="st46 st47">PIPELINE</text>
+	<text id="saucelabs1" transform="matrix(1 0 0 1 288.35 129.15)" class="st46 st47">SAUCE LABS</text>
+	<text id="saucelabs2" transform="matrix(1 0 0 1 288.35 229.15)" class="st46 st47">SAUCE LABS</text>
+	<text id="saucelabs3" transform="matrix(1 0 0 1 288.35 331.15)" class="st46 st47">SAUCE LABS</text>
+	<text id="bluemix" transform="matrix(1 0 0 1 381.35 229.15)" class="st46 st47">BLUEMIX</text>
+	<text id="repository2" transform="matrix(1 0 0 1 119.35 229.15)" class="st46 st47">REPOSITORY</text>
+	<text id="gitHub3" transform="matrix(1 0 0 1 136.35 241.15)" class="st46 st47">GitHub</text>
+	<text id="gitHub4" transform="matrix(1 0 0 1 136.35 342.15)" class="st46 st47">GitHub</text>
+	<text id="repository3" transform="matrix(1 0 0 1 119.35 331.15)" class="st46 st47">REPOSITORY</text>
+	<text id="webIde" transform="matrix(1 0 0 1 127.35 434.15)" class="st46 st47">WEB IDE</text>
+	<text id="slack" transform="matrix(1.0228 0 0 1 639.9434 128.1499)" class="st46 st47">SLACK</text>
+	<text id="pagerDuty" transform="matrix(1.0228 0 0 1 541.5674 128.1499)" class="st46 st47">PAGER DUTY</text>
+	<text id="devops" transform="matrix(1 0 0 1 463.35 129.15)" class="st46 st47">DEVOPS</text>
+	<text id="insights" transform="matrix(1 0 0 1 460.35 141.15)" class="st46 st47">INSIGHTS</text>
 </g>
 </svg>
