@@ -566,36 +566,36 @@
 		<g id="svg_580">
 			<line id="svg_577" class="st9" x1="374.7" y1="189.8" x2="366.9" y2="189.8"/>
 			<g id="svg_579">
-				<polygon id="svg_578" class="st10" points="373.6,184.8 380.1,189.8 373.6,194.7 				"/>
+				<polygon id="svg_578" class="st10" points="373.6,184.8 380.1,189.8 373.6,194.7"/>
 			</g>
 		</g>
 	</g>
 </g>
 <line id="svg_582" class="st9" x1="308.7" y1="157.9" x2="308.7" y2="135.3"/>
 <line id="svg_583" class="st9" x1="307.7" y1="258.4" x2="307.7" y2="233.8"/>
-<text id="svg_39" transform="matrix(1 0 0 1 1 18.65)" class="st26 st27">THINK</text>
-<text id="svg_40" transform="matrix(1 0 0 1 122 18.65)" class="st26 st27">CODE</text>
-<text id="svg_41" transform="matrix(1 0 0 1 278 18.65)" class="st26 st27">DELIVER</text>
-<text id="svg_42" transform="matrix(1 0 0 1 394 18.65)" class="st26 st27">RUN</text>
-<text id="svg_43" transform="matrix(1 0 0 1 1 129.65)" class="st26 st27">ISSUE TRACKER</text>
-<text id="svg_44" transform="matrix(1 0 0 1 23 142.65)" class="st26 st27">GitHub</text>
-<text id="svg_45" transform="matrix(1 0 0 1 135 129.65)" class="st26 st27">REPOSITORY</text>
-<text id="svg_46" transform="matrix(1 0 0 1 154 141.65)" class="st26 st27">GitHub</text>
-<text id="svg_47" transform="matrix(1 0 0 1 134 229.65)" class="st26 st27">REPOSITORY</text>
-<text id="svg_48" transform="matrix(1 0 0 1 132 331.65)" class="st26 st27">REPOSITORY</text>
-<text id="svg_49" transform="matrix(1 0 0 1 154 241.65)" class="st26 st27">GitHub</text>
-<text id="svg_50" transform="matrix(1 0 0 1 153 345.65)" class="st26 st27">GitHub</text>
-<text id="svg_51" transform="matrix(1 0 0 1 281 129.65)" class="st26 st27">PIPELINE</text>
-<text id="svg_52" transform="matrix(1 0 0 1 281 229.65)" class="st26 st27">PIPELINE</text>
-<text id="svg_53" transform="matrix(1 0 0 1 281 331.65)" class="st26 st27">PIPELINE</text>
-<text id="svg_54" transform="matrix(1 0 0 1 387 230.65)" class="st26 st27">BLUEMIX</text>
-<text id="svg_55" transform="matrix(1 0 0 1 147 435.65)" class="st26 st27">WEB IDE</text>
+<text id="think" transform="matrix(1 0 0 1 1 18.65)" class="st26 st27">THINK</text>
+<text id="code" transform="matrix(1 0 0 1 122 18.65)" class="st26 st27">CODE</text>
+<text id="deliver" transform="matrix(1 0 0 1 278 18.65)" class="st26 st27">DELIVER</text>
+<text id="run" transform="matrix(1 0 0 1 394 18.65)" class="st26 st27">RUN</text>
+<text id="issueTracker" transform="matrix(1 0 0 1 1 129.65)" class="st26 st27">ISSUE TRACKER</text>
+<text id="gitHub1" transform="matrix(1 0 0 1 23 142.65)" class="st26 st27">GitHub</text>
+<text id="repository1" transform="matrix(1 0 0 1 135 129.65)" class="st26 st27">REPOSITORY</text>
+<text id="gitHub2" transform="matrix(1 0 0 1 154 141.65)" class="st26 st27">GitHub</text>
+<text id="repository2" transform="matrix(1 0 0 1 134 229.65)" class="st26 st27">REPOSITORY</text>
+<text id="repository2" transform="matrix(1 0 0 1 132 331.65)" class="st26 st27">REPOSITORY</text>
+<text id="gitHub2" transform="matrix(1 0 0 1 154 241.65)" class="st26 st27">GitHub</text>
+<text id="gitHub3" transform="matrix(1 0 0 1 153 345.65)" class="st26 st27">GitHub</text>
+<text id="pipeline1" transform="matrix(1 0 0 1 281 129.65)" class="st26 st27">PIPELINE</text>
+<text id="pipeline2" transform="matrix(1 0 0 1 281 229.65)" class="st26 st27">PIPELINE</text>
+<text id="pipeline3" transform="matrix(1 0 0 1 281 331.65)" class="st26 st27">PIPELINE</text>
+<text id="bluemix" transform="matrix(1 0 0 1 387 230.65)" class="st26 st27">BLUEMIX</text>
+<text id="webIde" transform="matrix(1 0 0 1 147 435.65)" class="st26 st27">WEB IDE</text>
 <line id="svg_298_1_" class="st9" x1="255.4" y1="85.7" x2="218.8" y2="85.6"/>
 <g id="svg_581_1_">
 	<g id="svg_580_1_">
 		<line id="svg_577_1_" class="st9" x1="252.7" y1="85.8" x2="244.9" y2="85.8"/>
 		<g id="svg_579_1_">
-			<polygon id="svg_578_1_" class="st10" points="251.6,80.8 258.1,85.8 251.6,90.7 			"/>
+			<polygon id="svg_578_1_" class="st10" points="251.6,80.8 258.1,85.8 251.6,90.7"/>
 		</g>
 	</g>
 </g>
@@ -605,7 +605,7 @@
 		<g id="svg_580_2_">
 			<line id="svg_577_2_" class="st9" x1="250.7" y1="189.8" x2="242.9" y2="189.8"/>
 			<g id="svg_579_2_">
-				<polygon id="svg_578_2_" class="st10" points="249.6,184.8 256.1,189.8 249.6,194.7 				"/>
+				<polygon id="svg_578_2_" class="st10" points="249.6,184.8 256.1,189.8 249.6,194.7"/>
 			</g>
 		</g>
 	</g>
@@ -616,7 +616,7 @@
 		<g id="svg_580_3_">
 			<line id="svg_577_3_" class="st9" x1="248.7" y1="291.8" x2="240.9" y2="291.8"/>
 			<g id="svg_579_3_">
-				<polygon id="svg_578_3_" class="st10" points="247.6,286.8 254.1,291.8 247.6,296.7 				"/>
+				<polygon id="svg_578_3_" class="st10" points="247.6,286.8 254.1,291.8 247.6,296.7"/>
 			</g>
 		</g>
 	</g>
