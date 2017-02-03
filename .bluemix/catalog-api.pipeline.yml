@@ -215,7 +215,7 @@ stages:
   - name: Gate
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_devops_gate
-    CRITERIA: Store Unit Test and Code Coverage Checks
+    CRITERIA: Store Unit Test, Functional Tests, and Code Coverage Checks
     APPLICATION_NAME: ${CF_APP_NAME}
 - name: PROD
   inputs:
