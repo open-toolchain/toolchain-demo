@@ -1,7 +1,7 @@
 [
   {
-    "name":"Store Unit Test and Code Coverage Checks",
-    "description": "Composite Policy to check both Unit Tests and Code Coverage.",
+    "name":"Store Unit Test, Functional Tests, and Code Coverage Checks",
+    "description": "Composite Policy to check Unit Tests, Functional Tests, and Code Coverage.",
     "rules":[
       {
         "name": "Unit Test Rule",
