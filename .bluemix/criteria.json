@@ -15,6 +15,17 @@
         ]
       },
       {
+        "name": "Functional Test Rule",
+        "description": "Functional Test Rule",
+        "format":"mocha",
+        "stage":"fvt",
+        "percentPass":100,
+        "regressionCheck":true,
+        "criticalTests":[
+
+        ]
+      },
+      {
         "name": "Code Coverage Rule",
         "description": "Code Coverage Rule",
         "format":"istanbul",
