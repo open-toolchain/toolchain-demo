@@ -14,6 +14,9 @@ stages:
   - name: BUILD_PREFIX
     value: master
     type: text
+  - name: LOGICAL_ENV_NAME
+    value: master
+    type: text
   jobs:
   - name: Build
     type: builder
@@ -90,7 +93,7 @@ stages:
     value: master
     type: text
   - name: LOGICAL_ENV_NAME
-    value: STAGING
+    value: ${QA_SPACE_NAME}
     type: text
   jobs:
   - name: Deploy
@@ -156,6 +159,7 @@ stages:
       else
         echo "$GRUNTFILE not found."
       fi
+    ENVIRONMENT: ${QA_SPACE_NAME}
 - name: PROD
   inputs:
   - type: job
@@ -177,7 +181,7 @@ stages:
     value: ${CF_APP_NAME}
     type: text
   - name: LOGICAL_ENV_NAME
-    value: PRODUCTION
+    value: ${PROD_SPACE_NAME}
     type: text
   jobs:
   - name: Blue/Green Deploy
