@@ -50,6 +50,7 @@ ui-build:
       env:
         SAUCE_LABS: "test"
         UI_REPO: "ui-repo"
+        LOGICAL_APP_NAME: "Store UI"
         CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
         DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
         DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
@@ -73,6 +74,7 @@ catalog-api-build:
       env:
         SAUCE_LABS: "test"
         CATALOG_API_REPO: "catalog-api-repo"
+        LOGICAL_APP_NAME: "Store Catalog API"
         CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
         DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
         DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
@@ -96,6 +98,7 @@ orders-api-build:
       env:
         SAUCE_LABS: "test"
         ORDER_API_REPO: "orders-api-repo"
+        LOGICAL_APP_NAME: "Store Orders API"
         CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
         DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
         DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
