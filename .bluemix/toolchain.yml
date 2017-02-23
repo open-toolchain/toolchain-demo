@@ -1,138 +1,158 @@
----
+version: '2'
 default_locale: en
-locales: 
+locales:
   $ref: locales.yml
-name: "Microservices toolchain"
-description: "With this cloud-native toolchain, you use a sample to create an online store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, and online editing.\n\nThe Catalog and Orders API are backed by a Cloudant store. As part of deploying this application a Cloudant service instance will be created. For more information and terms, see the [Bluemix catalog](/catalog/services/cloudant-nosql-db/).\n\nThis toolchain uses tools that are part of the Continuous Delivery service. If an instance of that service isn't already in your organization, when you click **Create**, it is automatically added. For more information and terms, see the [Bluemix catalog](/catalog/services/continuous-delivery/).\n\nTo get started, click **Create**."
-version: 0.2
-image: data:image/svg+xml;base64,$file(toolchain.svg?localize,base64)
-icon: data:image/svg+xml;base64,$file(icon.svg,base64)
-required:
- - deploy
- - github
+template:
+  name: Microservices toolchain
+  description: >-
+    With this cloud-native toolchain, you use a sample to create an online store
+    that consists of three microservices: a Catalog API, an Orders API, and a UI
+    that calls both of the APIs. The toolchain is preconfigured for continuous
+    delivery, source control, blue-green deployment, functional testing, issue
+    tracking, and online editing.
 
-# Github repos
-catalog-api-repo:
-  service_id: github_integrated
-  parameters:
-    repo_name: "{{github.parameters.catalog-api-repo_name}}"
-    repo_url: "{{github.parameters.catalog-api-repo_url}}"
-    type: clone
-    has_issues: false
-  hidden: [form, description]
 
-orders-api-repo:
-  service_id: github_integrated
-  parameters:
-    repo_name: "{{github.parameters.orders-api-repo_name}}"
-    repo_url: "{{github.parameters.orders-api-repo_url}}"
-    type: clone
-    has_issues: false
-  hidden: [form, description]
+    The Catalog and Orders API are backed by a Cloudant store. As part of
+    deploying this application a Cloudant service instance will be created. For
+    more information and terms, see the [Bluemix
+    catalog](/catalog/services/cloudant-nosql-db/).
 
-ui-repo:
-  service_id: github_integrated
-  parameters:
-    repo_name: "{{github.parameters.ui-repo_name}}"
-    repo_url: "{{github.parameters.ui-repo_url}}"
-    type: clone
-    has_issues: true
-  hidden: [form, description]
 
-# Pipelines
-ui-build:
-  service_id: pipeline
-  parameters:
-    name: "ui-{{name}}"
-    ui-pipeline: true
-    configuration:
-      content: $file(ui.pipeline.yml)
-      env:
-        UI_REPO: "ui-repo"
-        CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
-        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
-        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
-        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
-        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
-        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
-        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
-        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
-        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
-        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
-      execute: true
-    services: ["ui-repo"]
-  hidden: [form, description]  
+    This toolchain uses tools that are part of the Continuous Delivery service.
+    If an instance of that service isn't already in your organization, when you
+    click **Create**, it is automatically added. For more information and terms,
+    see the [Bluemix catalog](/catalog/services/continuous-delivery/).
 
-catalog-api-build:
-  service_id: pipeline
-  parameters:
-    name: "catalog-api-{{name}}"
-    configuration:
-      content: $file(catalog-api.pipeline.yml)
-      env:
-        CATALOG_API_REPO: "catalog-api-repo"
-        CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
-        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
-        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
-        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
-        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
-        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
-        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
-        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
-        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
-        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
-      execute: true
-    services: ["catalog-api-repo"]
-  hidden: [form, description]
 
-orders-api-build:
-  service_id: pipeline
-  parameters:
-    name: "orders-api-{{name}}"
-    configuration:
-      content: $file(order-api.pipeline.yml)
-      env:
-        ORDER_API_REPO: "orders-api-repo"
-        CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
-        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
-        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
-        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
-        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
-        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
-        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
-        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
-        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
-        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
-      execute: true
-    services: ["orders-api-repo"]
-  hidden: [form, description]
-  
-#Deployment
-deploy:
-  schema:
-    $ref: deploy.json
-  service-category: pipeline
-  parameters:
-    dev-space: dev
-    qa-space: qa
-    prod-space: prod
-    orders-app-name: "{{orders-api-repo.parameters.repo_name}}"
-    catalog-app-name: "{{catalog-api-repo.parameters.repo_name}}"
-    ui-app-name: "{{ui-repo.parameters.repo_name}}"
-
-#Web IDE
-webide:
-  service_id: orion
-
-#Github
-github:
-  schema:
-    $ref: github.json
-  service-category: github_integrated
-  parameters:
-    catalog-api-repo_name: "catalog-api-{{name}}"
-    catalog-api-repo_url: https://github.com/open-toolchain/Microservices_CatalogAPI
-    orders-api-repo_name: "orders-api-{{name}}"
-    orders-api-repo_url: https://github.com/open-toolchain/Microservices_OrdersAPI
-    ui-repo_name: "ui-{{name}}"
-    ui-repo_url: https://github.com/open-toolchain/Microservices_UI
+    To get started, click **Create**.
+  header: '![](toolchain.svg?localize "header image")'
+  icon: icon.svg
+  required:
+    - ui-build
+    - catalog-api-build
+    - orders-api-build
+    - catalog-api-repo
+    - orders-api-repo
+    - ui-repo
+  info:
+    git url: >-
+      [https://github.com/open-toolchain/toolchain-demo](https://github.com/open-toolchain/toolchain-demo)
+    git branch: >-
+      [dedicated-cio](https://github.com/open-toolchain/toolchain-demo/tree/dedicated-cio)
+toolchain:
+  name: 'toolchain-demo-{{timestamp}}'
+services:
+  catalog-api-repo:
+    service_id: github_integrated
+    parameters:
+      repo_name: '{{form.github_integrated.parameters.catalog-api-repo_name}}'
+      repo_url: '{{form.github_integrated.parameters.catalog-api-repo_url}}'
+      type: clone
+      has_issues: false
+  orders-api-repo:
+    service_id: github_integrated
+    parameters:
+      repo_name: '{{form.github_integrated.parameters.orders-api-repo_name}}'
+      repo_url: '{{form.github_integrated.parameters.orders-api-repo_url}}'
+      type: clone
+      has_issues: false
+  ui-repo:
+    service_id: github_integrated
+    parameters:
+      repo_name: '{{form.github_integrated.parameters.ui-repo_name}}'
+      repo_url: '{{form.github_integrated.parameters.ui-repo_url}}'
+      type: clone
+      has_issues: true
+  ui-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - ui-repo
+      name: 'ui-{{toolchain.name}}'
+      ui-pipeline: true
+      configuration:
+        content:
+          $ref: ui.pipeline.yml
+          $refType: text
+        env:
+          QA_SPACE_NAME: '{{form.pipeline.parameters.qa-space}}'
+          UI_REPO: ui-repo
+          DEV_SPACE_NAME: '{{form.pipeline.parameters.dev-space}}'
+          DEV_ORG_NAME: '{{form.pipeline.parameters.dev-organization}}'
+          DEV_REGION_ID: '{{form.pipeline.parameters.dev-region}}'
+          CF_APP_NAME: '{{form.pipeline.parameters.ui-app-name}}'
+          QA_ORG_NAME: '{{form.pipeline.parameters.qa-organization}}'
+          QA_REGION_ID: '{{form.pipeline.parameters.qa-region}}'
+          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+        execute: true
+  catalog-api-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - catalog-api-repo
+      name: 'catalog-api-{{toolchain.name}}'
+      configuration:
+        content:
+          $ref: catalog-api.pipeline.yml
+          $refType: text
+        env:
+          QA_SPACE_NAME: '{{form.pipeline.parameters.qa-space}}'
+          CATALOG_API_REPO: catalog-api-repo
+          DEV_SPACE_NAME: '{{form.pipeline.parameters.dev-space}}'
+          DEV_ORG_NAME: '{{form.pipeline.parameters.dev-organization}}'
+          DEV_REGION_ID: '{{form.pipeline.parameters.dev-region}}'
+          CF_APP_NAME: '{{form.pipeline.parameters.catalog-app-name}}'
+          QA_ORG_NAME: '{{form.pipeline.parameters.qa-organization}}'
+          QA_REGION_ID: '{{form.pipeline.parameters.qa-region}}'
+          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+        execute: true
+  orders-api-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - orders-api-repo
+      name: 'orders-api-{{toolchain.name}}'
+      configuration:
+        content:
+          $ref: order-api.pipeline.yml
+          $refType: text
+        env:
+          QA_SPACE_NAME: '{{form.pipeline.parameters.qa-space}}'
+          ORDER_API_REPO: orders-api-repo
+          DEV_SPACE_NAME: '{{form.pipeline.parameters.dev-space}}'
+          DEV_ORG_NAME: '{{form.pipeline.parameters.dev-organization}}'
+          DEV_REGION_ID: '{{form.pipeline.parameters.dev-region}}'
+          CF_APP_NAME: '{{form.pipeline.parameters.orders-app-name}}'
+          QA_ORG_NAME: '{{form.pipeline.parameters.qa-organization}}'
+          QA_REGION_ID: '{{form.pipeline.parameters.qa-region}}'
+          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+        execute: true
+  webide:
+    service_id: orion
+form:
+  pipeline:
+    parameters:
+      dev-space: dev
+      qa-space: qa
+      prod-space: prod
+      orders-app-name: '{{services.orders-api-repo.parameters.repo_name}}'
+      catalog-app-name: '{{services.catalog-api-repo.parameters.repo_name}}'
+      ui-app-name: '{{services.ui-repo.parameters.repo_name}}'
+    schema:
+      $ref: deploy.json
+  github_integrated:
+    parameters:
+      catalog-api-repo_name: 'catalog-api-{{toolchain.name}}'
+      catalog-api-repo_url: 'https://github.com/open-toolchain/Microservices_CatalogAPI'
+      orders-api-repo_name: 'orders-api-{{toolchain.name}}'
+      orders-api-repo_url: 'https://github.com/open-toolchain/Microservices_OrdersAPI'
+      ui-repo_name: 'ui-{{toolchain.name}}'
+      ui-repo_url: 'https://github.com/open-toolchain/Microservices_UI'
+    schema:
+      $ref: github.json
