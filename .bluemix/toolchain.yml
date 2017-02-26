@@ -3,7 +3,7 @@ default_locale: en
 locales:
   $ref: locales.yml
 template:
-  name: Microservices toolchain
+  name: Microservices toolchain with DevOps Insights
   description: >-
     With this cloud-native toolchain, you use a sample to create an online store
     that consists of three microservices: a Catalog API, an Orders API, and a UI
