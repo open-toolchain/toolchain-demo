@@ -41,6 +41,12 @@ template:
     git branch: '[master](https://github.com/open-toolchain/toolchain-demo/tree/master)'
 toolchain:
   name: 'toolchain-demo-{{timestamp}}'
+  template:
+    getting_started: >-
+      Your toolchain is ready.
+
+      Quick start: View your pipelines and see the sample app deployed. View the source code in the Git repos
+      and try making a change to trigger a new build and deploy. Evaluate Deployment Risk in DevOps Insights.
 services:
   orders-api-build:
     service_id: pipeline
