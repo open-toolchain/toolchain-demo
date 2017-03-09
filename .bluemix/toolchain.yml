@@ -13,7 +13,7 @@ template:
 
 
     To get started, click **Create**.
-  header: '![](toolchain.png "header image")'
+  header: '![](toolchain.png)'
   required:
     - ui-build
     - catalog-api-build
