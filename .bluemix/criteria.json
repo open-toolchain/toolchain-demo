@@ -37,7 +37,7 @@
   },
   {
     "name":"Store Unit Test and Code Coverage Checks",
-    "description": "Composite Policy to check both Unit Tests and Code Coverage.",
+    "description": "Composite Policy to check Unit Tests and Code Coverage.",
     "rules":[
       {
         "name": "Unit Test Rule",
@@ -55,8 +55,24 @@
         "description": "Code Coverage Rule",
         "format":"istanbul",
         "stage":"code",
-        "codeCoverage":80,
-        "regressionCheck":true
+        "codeCoverage":60
+      }
+    ]
+  },
+  {
+    "name":"Store Functional Tests Checks",
+    "description": "Composite Policy to check Functional Tests.",
+    "rules":[
+      {
+        "name": "Functional Test Rule",
+        "description": "Functional Test Rule",
+        "format":"xunit",
+        "stage":"fvt",
+        "percentPass":100,
+        "regressionCheck":true,
+        "criticalTests":[
+
+        ]
       }
     ]
   }
