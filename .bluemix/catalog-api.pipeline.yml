@@ -247,6 +247,10 @@ stages:
     value: master
     type: text
   jobs:
+  - name: Prod Gate
+    type: tester
+    extension_id: ibm.devops.services.pipeline.dra_devops_gate
+    CRITERIA: Store Unit Test, Functional Tests, and Code Coverage Checks
   - name: Blue/Green Deploy
     type: deployer
     target:
