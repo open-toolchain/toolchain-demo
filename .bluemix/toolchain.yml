@@ -53,8 +53,7 @@ services:
       name: 'orders-api-{{toolchain.name}}'
       configuration:
         content:
-          $ref: order-api.pipeline.yml
-          $refType: text
+          $text: order-api.pipeline.yml
         env:
           DEV_REGION_ID: '{{form.pipeline.parameters.dev-region}}'
           SAUCE_LABS: test
@@ -94,8 +93,7 @@ services:
       ui-pipeline: true
       configuration:
         content:
-          $ref: ui.pipeline.yml
-          $refType: text
+          $text: ui.pipeline.yml
         env:
           DEV_REGION_ID: '{{form.pipeline.parameters.dev-region}}'
           SAUCE_LABS: test
@@ -120,8 +118,7 @@ services:
       name: 'catalog-api-{{toolchain.name}}'
       configuration:
         content:
-          $ref: catalog-api.pipeline.yml
-          $refType: text
+          $text: catalog-api.pipeline.yml
         env:
           DEV_REGION_ID: '{{form.pipeline.parameters.dev-region}}'
           SAUCE_LABS: test
