@@ -1,30 +1,11 @@
 version: '2'
-default_locale: en
-locales:
-  $ref: locales.yml
+messages:
+  $i18n: locales.yml
 template:
-  name: Microservices toolchain
-  description: >-
-    With this cloud-native toolchain, you use a sample to create an online store
-    that consists of three microservices: a Catalog API, an Orders API, and a UI
-    that calls both of the APIs. The toolchain is preconfigured for continuous
-    delivery, source control, blue-green deployment, functional testing, issue
-    tracking, and online editing.
-
-
-    The Catalog and Orders API are backed by a Cloudant store. As part of
-    deploying this application a Cloudant service instance will be created. For
-    more information and terms, see the [Bluemix
-    catalog](/catalog/services/cloudant-nosql-db/).
-
-
-    This toolchain uses tools that are part of the Continuous Delivery service.
-    If an instance of that service isn't already in your organization, when you
-    click **Create**, it is automatically added. For more information and terms,
-    see the [Bluemix catalog](/catalog/services/continuous-delivery/).
-
-
-    To get started, click **Create**.
+  name:
+    $ref: "#/messages/template.name"
+  description:
+    $ref: "#/messages/template.description"
   header: '![](toolchain.svg?localize)'
   icon: icon.svg
   required:
