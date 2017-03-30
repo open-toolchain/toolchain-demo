@@ -1,18 +1,11 @@
 version: '2'
-default_locale: en
-locales:
-  $ref: locales.yml
+messages:
+  $i18n: locales.yml
 template:
-  name: Microservices toolchain
-  description: >-
-    With this cloud-native toolchain, you use a sample to create an online store
-    that consists of three microservices: a Catalog API, an Orders API, and a UI
-    that calls both of the APIs. The toolchain is preconfigured for continuous
-    delivery, source control, blue-green deployment, functional testing, issue
-    tracking, online editing, and alert notification.
-
-
-    To get started, click **Create**.
+  name:
+    $ref: "#/messages/template.name"
+  description:
+    $ref: "#/messages/template.description"
   header: '![](toolchain.svg)'
   required:
     - ui-build
