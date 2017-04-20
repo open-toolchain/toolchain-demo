@@ -1,12 +1,12 @@
-#Microservices toolchain with DevOps Insights
+# Microservices toolchain with DevOps Insights
 
 Get started with this sample, which is an online store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The sample includes a DevOps toolchain that is preconfigured for continuous delivery, source control, functional testing, issue tracking, online editing, and messaging. 
 
-###To get started, click this button:
+### To get started, click this button:
 [![Deploy To Bluemix](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/open-toolchain/toolchain-demo.git)
  
 ---
-###Learn more
+### Learn more
 
 * [Step by step tutorial](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_microservices)
 * [Getting started](https://bluemix.net/devops)
