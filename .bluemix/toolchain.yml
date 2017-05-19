@@ -57,6 +57,7 @@ services:
       repo_url: '{{form.githubpublic.parameters.catalog-api-repo_url}}'
       type: clone
       has_issues: false
+      enable_traceability: true
   ui-repo:
     service_id: githubpublic
     parameters:
@@ -64,6 +65,7 @@ services:
       repo_url: '{{form.githubpublic.parameters.ui-repo_url}}'
       type: clone
       has_issues: true
+      enable_traceability: true
   ui-build:
     service_id: pipeline
     parameters:
@@ -122,6 +124,7 @@ services:
       repo_url: '{{form.githubpublic.parameters.orders-api-repo_url}}'
       type: clone
       has_issues: false
+      enable_traceability: true
   messaging:
     service_id: slack
     $ref: slack.yml
