@@ -37,7 +37,7 @@
     "form": [
       {
         "type": "validator",
-        "url": "/devops/setup/bm-helper/custom_github_helper.html"
+        "url": "/devops/setup/bm-helper/custom_github_helper.html?git_id=333900"
       },
       {
         "type": "table",
