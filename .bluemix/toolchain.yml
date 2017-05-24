@@ -18,29 +18,29 @@ template:
     git url: >-
       [https://github.com/open-toolchain/toolchain-demo](https://github.com/open-toolchain/toolchain-demo)
     git branch: >-
-      [dedicated-no-ghe](https://github.com/open-toolchain/toolchain-demo/tree/dedicated-no-ghe)
+      [dedicated-333900](https://github.com/open-toolchain/toolchain-demo/tree/dedicated-333900)
 toolchain:
   name: 'toolchain-demo-{{timestamp}}'
 services:
   catalog-api-repo:
-    service_id: githubpublic
+    service_id: github_333900
     parameters:
-      repo_name: '{{form.githubpublic.parameters.catalog-api-repo_name}}'
-      repo_url: '{{form.githubpublic.parameters.catalog-api-repo_url}}'
+      repo_name: '{{form.github_333900.parameters.catalog-api-repo_name}}'
+      repo_url: '{{form.github_333900.parameters.catalog-api-repo_url}}'
       type: clone
       has_issues: false
   orders-api-repo:
-    service_id: githubpublic
+    service_id: github_333900
     parameters:
-      repo_name: '{{form.githubpublic.parameters.orders-api-repo_name}}'
-      repo_url: '{{form.githubpublic.parameters.orders-api-repo_url}}'
+      repo_name: '{{form.github_333900.parameters.orders-api-repo_name}}'
+      repo_url: '{{form.github_333900.parameters.orders-api-repo_url}}'
       type: clone
       has_issues: false
   ui-repo:
-    service_id: githubpublic
+    service_id: github_333900
     parameters:
-      repo_name: '{{form.githubpublic.parameters.ui-repo_name}}'
-      repo_url: '{{form.githubpublic.parameters.ui-repo_url}}'
+      repo_name: '{{form.github_333900.parameters.ui-repo_name}}'
+      repo_url: '{{form.github_333900.parameters.ui-repo_url}}'
       type: clone
       has_issues: true
   ui-build:
@@ -123,7 +123,7 @@ form:
       ui-app-name: '{{services.ui-repo.parameters.repo_name}}'
     schema:
       $ref: deploy.json
-  githubpublic:
+  github_333900:
     parameters:
       catalog-api-repo_name: 'catalog-api-{{toolchain.name}}'
       catalog-api-repo_url: 'https://github.com/open-toolchain/Microservices_CatalogAPI'
