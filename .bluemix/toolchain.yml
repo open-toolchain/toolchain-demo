@@ -29,6 +29,7 @@ services:
       repo_url: '{{form.github_333900.parameters.catalog-api-repo_url}}'
       type: clone
       has_issues: false
+      enable_traceability: true
   orders-api-repo:
     service_id: github_333900
     parameters:
@@ -36,6 +37,7 @@ services:
       repo_url: '{{form.github_333900.parameters.orders-api-repo_url}}'
       type: clone
       has_issues: false
+      enable_traceability: true
   ui-repo:
     service_id: github_333900
     parameters:
@@ -43,6 +45,7 @@ services:
       repo_url: '{{form.github_333900.parameters.ui-repo_url}}'
       type: clone
       has_issues: true
+      enable_traceability: true
   ui-build:
     service_id: pipeline
     parameters:
