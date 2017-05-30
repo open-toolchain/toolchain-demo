@@ -739,7 +739,7 @@
 	<text id="headerSVG.learn" transform="matrix(1 0 0 1 463.35 18.15)" class="st46 st47">LEARN</text>
 	<text id="headerSVG.manage" transform="matrix(1 0 0 1 541.35 18.15)" class="st46 st47">MANAGE</text>
 	<text id="headerSVG.culture" transform="matrix(1 0 0 1 618.35 18.15)" class="st46 st47">CULTURE</text>
-	<text id="headerSVG.issueTracker" transform="matrix(1 0 0 1 1.35 129.15)" textLength="89.7" lengthAdjust="spacingAndGlyphs" class="st46 st47">ISSUE TRACKER</text>
+	<text id="headerSVG.issueTracker" transform="matrix(1 0 0 1 1.35 129.15)" textLength="90" lengthAdjust="spacingAndGlyphs" class="st46 st47">ISSUE TRACKER</text>
 	<text id="headerSVG.gitHub1" transform="matrix(1 0 0 1 25.35 141.15)" class="st46 st47">GitHub</text>
 	<text id="headerSVG.repository1" transform="matrix(1 0 0 1 119.35 129.15)" class="st46 st47">REPOSITORY</text>
 	<text id="headerSVG.gitHub2" transform="matrix(1 0 0 1 136.35 140.15)" class="st46 st47">GitHub</text>
