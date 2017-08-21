@@ -17,8 +17,8 @@ template:
     - ui-repo
   info:
     git url: >-
-      [https://github.com/jparra5/toolchain-demo](https://github.com/jparra5/toolchain-demo)
-    git branch: '[master](https://github.com/jparra5/toolchain-demo/tree/master)'
+      [https://github.com/open-toolchain/toolchain-demo](https://github.com/open-toolchain/toolchain-demo)
+    git branch: '[master](https://github.com/open-toolchain/toolchain-demo/tree/master)'
 toolchain:
   name: 'toolchain-demo-{{timestamp}}'
   template:
@@ -153,7 +153,7 @@ form:
   githubpublic:
     parameters:
       catalog-api-repo_name: 'catalog-api-{{toolchain.name}}'
-      catalog-api-repo_url: 'https://github.com/jparra5/Microservices_CatalogAPI'
+      catalog-api-repo_url: 'https://github.com/open-toolchain/Microservices_CatalogAPI'
       orders-api-repo_name: 'orders-api-{{toolchain.name}}'
       orders-api-repo_url: 'https://github.com/open-toolchain/Microservices_OrdersAPI'
       ui-repo_name: 'ui-{{toolchain.name}}'
