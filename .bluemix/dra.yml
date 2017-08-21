@@ -8,7 +8,7 @@ parameters:
           {
             "name": "Unit Test Rule",
             "description": "Unit Test Rule",
-            "format":"mocha",
+            "format":"xunit",
             "stage":"unittest",
             "percentPass":100,
             "regressionCheck":true,
@@ -44,7 +44,7 @@ parameters:
           {
             "name": "Unit Test Rule",
             "description": "Unit Test Rule",
-            "format":"mocha",
+            "format":"xunit",
             "stage":"unittest",
             "percentPass":100,
             "regressionCheck":true,
