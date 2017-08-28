@@ -56,10 +56,7 @@
             },
             "type": "string",
             "pattern": "\\S",
-            "maxLength": 63,
-            "invalidMessage": {
-                "$ref": "#/messages/deploy.invalidAppName"
-            }
+            "maxLength": 63
         },
         "catalog-app-name": {
             "description": {
@@ -67,10 +64,7 @@
             },
             "type": "string",
             "pattern": "\\S",
-            "maxLength": 63,
-            "invalidMessage": {
-                "$ref": "#/messages/deploy.invalidAppName"
-            }
+            "maxLength": 63
         },
         "ui-app-name": {
             "description": {
@@ -78,10 +72,7 @@
             },
             "type": "string",
             "pattern": "\\S",
-            "maxLength": 63,
-            "invalidMessage": {
-                "$ref": "#/messages/deploy.invalidAppName"
-            }
+            "maxLength": 63
         }
     },
     "required": [
