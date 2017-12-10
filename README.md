@@ -10,7 +10,7 @@ Get started with this sample, which is an online store that consists of three mi
 
 * [Step by step tutorial](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_microservices)
 * [Getting started](https://bluemix.net/devops)
-* [Documentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/index.html?pos=2)
+* [Documentation](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html?pos=2)
 * [Toolchains on the Bluemix Garage Method site](https://www.ibm.com/devops/method/category/tools)
 * Blog: [Bluemix Continuous Delivery is now live](https://www.ibm.com/blogs/bluemix/2016/11/bluemix-continuous-delivery-is-now-live/)
 * Video: [Introducing IBM Bluemix Continuous Delivery](https://www.youtube.com/watch?v=QPSAZ64APpc&feature=youtu.be) (2m12s)
