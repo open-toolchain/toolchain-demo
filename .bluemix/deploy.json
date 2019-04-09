@@ -15,39 +15,39 @@
     "type": "object",
     "properties": {
         "dev-region": {
-            "description": "The bluemix region",
+            "description": "The IBM Cloud CF region",
             "type": "string"
         },
         "dev-organization": {
-            "description": "The bluemix org",
+            "description": "The IBM Cloud CForg",
             "type": "string"
         },
         "dev-space": {
-            "description": "The bluemix space",
+            "description": "The IBM Cloud CF space",
             "type": "string"
         },
         "qa-region": {
-            "description": "The bluemix region",
+            "description": "The IBM Cloud CF region",
             "type": "string"
         },
         "qa-organization": {
-            "description": "The bluemix org",
+            "description": "The IBM Cloud CF org",
             "type": "string"
         },
         "qa-space": {
-            "description": "The bluemix space",
+            "description": "The IBM Cloud CF space",
             "type": "string"
         },
         "prod-region": {
-            "description": "The bluemix region",
+            "description": "The IBM Cloud CF region",
             "type": "string"
         },
         "prod-organization": {
-            "description": "The bluemix org",
+            "description": "TThe IBM Cloud CF org",
             "type": "string"
         },
         "prod-space": {
-            "description": "The bluemix space",
+            "description": "The IBM Cloud CF space",
             "type": "string"
         },
         "orders-app-name": {
