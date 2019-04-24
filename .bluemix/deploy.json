@@ -19,7 +19,7 @@
             "type": "string"
         },
         "dev-organization": {
-            "description": "The IBM Cloud CForg",
+            "description": "The IBM Cloud CF org",
             "type": "string"
         },
         "dev-space": {
