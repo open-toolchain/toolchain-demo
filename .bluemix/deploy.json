@@ -15,39 +15,57 @@
     "type": "object",
     "properties": {
         "dev-region": {
-            "description": "The IBM Cloud CF region",
+            "description": {
+                "$ref":"#/messages/deploy.region"
+             },
             "type": "string"
         },
         "dev-organization": {
-            "description": "The IBM Cloud CF org",
+            "description": {
+                "$ref":"#/messages/deploy.org"
+             },
             "type": "string"
         },
         "dev-space": {
-            "description": "The IBM Cloud CF space",
+            "description": {
+                "$ref":"#/messages/deploy.space"
+             },
             "type": "string"
         },
         "qa-region": {
-            "description": "The IBM Cloud CF region",
+            "description": {
+                "$ref":"#/messages/deploy.region"
+             },
             "type": "string"
         },
         "qa-organization": {
-            "description": "The IBM Cloud CF org",
+            "description": {
+                "$ref":"#/messages/deploy.org"
+             },
             "type": "string"
         },
         "qa-space": {
-            "description": "The IBM Cloud CF space",
+            "description": {
+                "$ref":"#/messages/deploy.space"
+             },
             "type": "string"
         },
         "prod-region": {
-            "description": "The IBM Cloud CF region",
+            "description": {
+                "$ref":"#/messages/deploy.region"
+             },
             "type": "string"
         },
         "prod-organization": {
-            "description": "TThe IBM Cloud CF org",
+            "description": {
+                "$ref":"#/messages/deploy.org"
+             },
             "type": "string"
         },
         "prod-space": {
-            "description": "The IBM Cloud CF space",
+            "description": {
+                "$ref":"#/messages/deploy.space"
+             },
             "type": "string"
         },
         "orders-app-name": {
