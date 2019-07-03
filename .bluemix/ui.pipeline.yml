@@ -70,10 +70,10 @@ stages:
     value: undefined
     type: text
   - name: SAUCE_USERNAME
-    value: {{services.test.parameters.username}}
+    value: '{{services.test.parameters.username}}'
     type: text
   - name: SAUCE_ACCESS_KEY
-    value: {{services.test.parameters.key}}
+    value: '{{services.test.parameters.key}}'
     type: text
   - name: HOST
     value: ondemand.saucelabs.com
@@ -110,10 +110,6 @@ stages:
     extension_id: ibm.devops.services.pipeline.saucelabs
     services:
       - ${SAUCE_LABS}
-    target:
-      region_id: ${QA_REGION_ID}
-      organization: ${QA_ORG_NAME}
-      space: ${QA_SPACE_NAME}
     DL_ASSETS: 'false'
     SELECT_CMD: custom
     COMMAND: |-
