@@ -18,55 +18,91 @@
             "description": {
                 "$ref":"#/messages/deploy.region"
              },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-region",
+                "params": ["api-key"]
+            }
         },
         "dev-organization": {
             "description": {
                 "$ref":"#/messages/deploy.org"
              },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-org",
+                "params": ["dev-region"]
+            }
         },
         "dev-space": {
             "description": {
                 "$ref":"#/messages/deploy.space"
              },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-space",
+                "params": ["dev-organization"]
+            }
         },
         "qa-region": {
             "description": {
                 "$ref":"#/messages/deploy.region"
              },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-region",
+                "params": ["api-key"]
+            }
         },
         "qa-organization": {
             "description": {
                 "$ref":"#/messages/deploy.org"
              },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-org",
+                "params": ["qa-region"]
+            }
         },
         "qa-space": {
             "description": {
                 "$ref":"#/messages/deploy.space"
              },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-space",
+                "params": ["qa-organization"]
+            }
         },
         "prod-region": {
             "description": {
                 "$ref":"#/messages/deploy.region"
              },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-region",
+                "params": ["api-key"]
+            }
         },
         "prod-organization": {
             "description": {
                 "$ref":"#/messages/deploy.org"
              },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-org",
+                "params": ["prod-region"]
+            }
         },
         "prod-space": {
             "description": {
                 "$ref":"#/messages/deploy.space"
              },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-space",
+                "params": ["prod-organization"]
+            }
         },
         "orders-app-name": {
             "description": {
@@ -91,6 +127,15 @@
             "type": "string",
             "pattern": "\\S",
             "maxLength": 63
+        },
+        "api-key": {
+            "description": {
+                "$ref": "#/messages/deploy.apiKeyDescription"
+            },
+            "type": "string",
+            "validator": {
+                "v-type": "api-key"
+            }
         }
     },
     "required": [
@@ -105,12 +150,13 @@
         "prod-space",
         "orders-app-name",
         "catalog-app-name",
-        "ui-app-name"
+        "ui-app-name",
+        "api-key"
     ],
     "form": [
         {
             "type": "validator",
-            "url": "/devops/setup/bm-helper/helper.html"
+            "url": "/devops/validator/validator-v1.html"
         },
         {
             "type": "text",
@@ -135,6 +181,14 @@
                 "$ref": "#/messages/deploy.appName3"
             },
             "key": "ui-app-name"
+        },
+        {
+            "type": "password",
+            "readonly": false,
+            "title": {
+                "$ref": "#/messages/deploy.apiKeyTitle"
+            },
+            "key": "api-key"
         },
         {
             "type": "table",
